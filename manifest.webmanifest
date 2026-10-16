@@ -1,0 +1,16 @@
+{
+  "name": "Fietsquiz Op Weg",
+  "short_name": "Fietsquiz",
+  "description": "Kies je fiets en test je kennis van de wegcode en verkeersveiligheid.",
+  "lang": "nl-BE",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F3F4EF",
+  "theme_color": "#C2412B",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

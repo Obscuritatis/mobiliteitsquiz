@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#C2412B">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Fietsquiz">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Fietsquiz Op Weg</title>
 <meta name="description" content="Kies je fiets en test je kennis van de verkeersregels in een korte quiz.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,6 +100,11 @@ h1 .hl { color: var(--lane); }
 .vehicle .go { width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; flex: none; }
 .vehicle .go svg { width: 16px; height: 16px; }
 .vehicle .meta { min-width: 0; }
+.install { margin-top: 22px; display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: center; padding: 14px; border-radius: 14px; background: var(--surface); border: 2px dashed var(--line); }
+.install img { width: 52px; height: 52px; border-radius: 12px; }
+.install b { font-family: var(--font-display); font-weight: 800; font-stretch: 90%; text-transform: uppercase; letter-spacing: .03em; display: block; }
+.install p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.install button { margin-top: 10px; border: 0; cursor: pointer; border-radius: 10px; padding: 10px 14px; background: var(--lane); color: #fff; font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 14px; }
 .foot { color: var(--muted); font-size: 13px; margin-top: 26px; }
 .foot a { color: inherit; }
 
@@ -341,9 +353,11 @@ function renderHome() {
             <span class="go" aria-hidden="true">${ARROW}</span>
           </button>`).join("")}
       </div>
+      <div id="installSlot"></div>
       <p class="foot">Gebaseerd op de Belgische wegcode. Meer info op <a href="https://www.wegcode.be" target="_blank" rel="noopener">wegcode.be</a>.</p>
     </section>`;
   app.querySelectorAll(".vehicle").forEach(b => b.addEventListener("click", () => start(b.dataset.id)));
+  renderInstall();
 }
 
 function start(id) {
@@ -429,6 +443,33 @@ function goHome() {
   window.scrollTo({ top: 0 });
 }
 backBtn.addEventListener("click", goHome);
+
+// Installeren als app
+let installPrompt = null;
+const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+function renderInstall() {
+  const slot = document.getElementById("installSlot");
+  if (!slot || standalone) return;
+  if (installPrompt) {
+    slot.innerHTML = `<div class="install"><img src="icons/icon-192.png" alt=""><div><b>Zet de quiz op je startscherm</b><p>Speel later opnieuw, ook zonder internet.</p><button id="installBtn">Installeer de app</button></div></div>`;
+    document.getElementById("installBtn").addEventListener("click", async () => {
+      installPrompt.prompt();
+      await installPrompt.userChoice;
+      installPrompt = null;
+      slot.innerHTML = "";
+    });
+  } else if (isIOS) {
+    slot.innerHTML = `<div class="install"><img src="icons/icon-192.png" alt=""><div><b>Zet de quiz op je startscherm</b><p>Tik onderaan in Safari op het deelicoon en kies <strong>Zet op beginscherm</strong>.</p></div></div>`;
+  } else {
+    slot.innerHTML = "";
+  }
+}
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); installPrompt = e; renderInstall(); });
+window.addEventListener("appinstalled", () => { installPrompt = null; renderInstall(); });
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
 
 const initial = (location.hash || "").slice(1);
 if (VEHICLES[initial]) start(initial); else renderHome();

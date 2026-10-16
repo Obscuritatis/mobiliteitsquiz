@@ -1,6 +1,6 @@
 # Mobiliteitsquiz
 
-Fietsquiz voor de mobiliteitsactie: kies je voertuig (gewone fiets, elektrische fiets, speed pedelec, bakfiets of longtail) en beantwoord zes vragen over de Belgische verkeersregels en veiligheid.
+Fietsquiz voor de mobiliteitsactie: kies je voertuig (gewone fiets, elektrische fiets, speed pedelec, bakfiets of longtail) en beantwoord tien vragen over je fiets, de Belgische wegcode en verkeersveiligheid.
 
 Online via GitHub Pages: https://obscuritatis.github.io/mobiliteitsquiz/
 

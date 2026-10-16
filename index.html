@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#C2412B">
+<title>Fietsquiz Op Weg</title>
+<meta name="description" content="Kies je fiets en test je kennis van de verkeersregels in een korte quiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: één smalle kolom zoals een fietspad, met een gestreepte middenlijn als voortgangsbalk */
+:root {
+  --bg: #F3F4EF;          /* licht beton */
+  --surface: #FFFFFF;
+  --ink: #17201E;         /* asfalt */
+  --muted: #5B6662;
+  --line: #D9DDD3;
+  --lane: #C2412B;        /* rood fietspad */
+  --lane-soft: #F6DDD6;
+  --sign: #1F56A6;        /* blauw verkeersbord */
+  --sign-soft: #DCE6F5;
+  --signal: #F2C230;      /* signaalgeel */
+  --ok: #1E7A4C;
+  --ok-soft: #DAF0E3;
+  --bad: #B3261E;
+  --bad-soft: #F9DEDC;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121816; --surface: #1C2422; --ink: #EEF1EC; --muted: #A3ADA8; --line: #2F3A37;
+    --lane: #E5654C; --lane-soft: #3A211C; --sign: #7FA8EA; --sign-soft: #1B2A42; --signal: #F2C230;
+    --ok: #5BC48C; --ok-soft: #173326; --bad: #F08A80; --bad-soft: #3D1D1A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121816; --surface: #1C2422; --ink: #EEF1EC; --muted: #A3ADA8; --line: #2F3A37;
+  --lane: #E5654C; --lane-soft: #3A211C; --sign: #7FA8EA; --sign-soft: #1B2A42; --signal: #F2C230;
+  --ok: #5BC48C; --ok-soft: #173326; --bad: #F08A80; --bad-soft: #3D1D1A;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { min-height: 100%; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 40px;
+}
+.wrap { max-width: 560px; margin: 0 auto; }
+button { font: inherit; color: inherit; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--sign); outline-offset: 3px; }
+
+/* kop */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px 6px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-stretch: 85%; letter-spacing: .02em; text-transform: uppercase; font-size: 15px; }
+.brand .dot { width: 26px; height: 26px; border-radius: 50%; background: var(--sign); display: grid; place-items: center; }
+.brand .dot svg { width: 18px; height: 18px; }
+.back { border: 0; background: transparent; padding: 8px 4px; color: var(--muted); cursor: pointer; font-size: 15px; display: inline-flex; align-items: center; gap: 6px; }
+.back:hover { color: var(--ink); }
+
+/* hero */
+.hero { padding-block: 18px 22px; }
+.eyebrow { font-family: var(--font-display); font-weight: 700; font-stretch: 100%; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; color: var(--lane); }
+h1 { font-family: var(--font-display); font-weight: 900; font-stretch: 72%; text-transform: uppercase; line-height: .92; font-size: clamp(48px, 15vw, 76px); margin: 8px 0 14px; letter-spacing: -.01em; text-wrap: balance; }
+h1 .hl { color: var(--lane); }
+.lede { color: var(--muted); margin: 0; max-width: 44ch; }
+
+/* fietspad-streep */
+.lane-rule { height: 10px; border-radius: 3px; background: var(--lane); position: relative; overflow: hidden; margin-block: 6px 22px; }
+.lane-rule::after { content: ""; position: absolute; inset: 4px 0 auto; height: 2px; background: repeating-linear-gradient(90deg, var(--bg) 0 14px, transparent 14px 26px); }
+
+/* voertuigkeuze */
+.pick-label { font-family: var(--font-display); font-weight: 800; font-stretch: 90%; text-transform: uppercase; letter-spacing: .06em; font-size: 14px; margin: 0 0 10px; }
+.vehicles { display: grid; gap: 10px; }
+.vehicle {
+  display: grid; grid-template-columns: 84px 1fr auto; align-items: center; gap: 14px;
+  width: 100%; text-align: left; cursor: pointer;
+  background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px 12px 10px;
+  transition: border-color .15s, transform .15s;
+}
+.vehicle:hover { border-color: var(--ink); transform: translateX(3px); }
+.vehicle .ico { width: 84px; height: 52px; border-radius: 10px; background: var(--sign-soft); color: var(--sign); display: grid; place-items: center; }
+.vehicle .ico svg { width: 70px; height: 42px; }
+.vehicle .name { font-family: var(--font-display); font-weight: 800; font-stretch: 85%; font-size: 21px; line-height: 1.1; text-transform: uppercase; display: block; }
+.vehicle .sub { color: var(--muted); font-size: 14px; display: block; margin-top: 2px; }
+.vehicle .go { width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; flex: none; }
+.vehicle .go svg { width: 16px; height: 16px; }
+.vehicle .meta { min-width: 0; }
+.foot { color: var(--muted); font-size: 13px; margin-top: 26px; }
+.foot a { color: inherit; }
+
+/* quiz */
+.qhead { display: flex; align-items: center; gap: 12px; padding-block: 12px 4px; }
+.qhead .ico { width: 64px; height: 40px; color: var(--sign); flex: none; }
+.qhead .ico svg { width: 64px; height: 40px; }
+.qhead .t { font-family: var(--font-display); font-weight: 800; font-stretch: 85%; text-transform: uppercase; font-size: 20px; line-height: 1.1; }
+.qhead .c { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.progress { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 5px; margin-block: 14px 22px; }
+.progress span { height: 8px; border-radius: 2px; background: var(--line); transition: background .25s; }
+.progress span.done { background: var(--lane); }
+.progress span.now { background: var(--signal); }
+.question { font-family: var(--font-display); font-weight: 800; font-stretch: 90%; font-size: clamp(24px, 6.4vw, 30px); line-height: 1.15; margin: 0 0 18px; text-wrap: balance; }
+.answers { display: grid; gap: 10px; }
+.answer {
+  display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: center;
+  width: 100%; text-align: left; cursor: pointer; font-size: 17px;
+  background: var(--surface); border: 2px solid var(--line); border-radius: 12px; padding: 12px 14px;
+  transition: border-color .15s, background .15s;
+}
+.answer:hover:not(:disabled) { border-color: var(--ink); }
+.answer .k { width: 34px; height: 34px; border-radius: 8px; background: var(--bg); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; }
+.answer:disabled { cursor: default; }
+.answer.right { border-color: var(--ok); background: var(--ok-soft); }
+.answer.right .k { background: var(--ok); color: var(--surface); }
+.answer.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.answer.wrong .k { background: var(--bad); color: var(--surface); }
+.answer.dim { opacity: .55; }
+.explain { margin-top: 16px; padding: 14px 16px; border-radius: 12px; background: var(--sign-soft); border-left: 6px solid var(--sign); }
+.explain strong { display: block; font-family: var(--font-display); font-stretch: 90%; text-transform: uppercase; letter-spacing: .04em; font-size: 14px; margin-bottom: 4px; }
+.explain p { margin: 0; }
+.cta {
+  margin-top: 18px; width: 100%; border: 0; cursor: pointer; border-radius: 12px; padding: 16px 18px;
+  background: var(--ink); color: var(--bg); font-family: var(--font-display); font-weight: 800; font-stretch: 90%;
+  text-transform: uppercase; letter-spacing: .05em; font-size: 17px; display: flex; justify-content: space-between; align-items: center;
+}
+.cta.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.cta svg { width: 18px; height: 18px; }
+
+/* resultaat */
+.result { padding-block: 10px 0; }
+.score { display: flex; align-items: baseline; gap: 10px; margin: 6px 0 10px; }
+.score .n { font-family: var(--font-display); font-weight: 900; font-stretch: 70%; font-size: 120px; line-height: .85; color: var(--lane); font-variant-numeric: tabular-nums; }
+.score .of { font-family: var(--font-display); font-weight: 800; font-stretch: 80%; font-size: 34px; color: var(--muted); }
+.verdict { font-family: var(--font-display); font-weight: 900; font-stretch: 80%; text-transform: uppercase; font-size: 30px; line-height: 1; margin: 0 0 10px; }
+.tipbox { margin-top: 18px; padding: 16px; border-radius: 12px; background: var(--surface); border: 2px dashed var(--line); }
+.tipbox .eyebrow { color: var(--sign); }
+.tipbox p { margin: 6px 0 0; }
+.review { margin-top: 22px; display: grid; gap: 8px; }
+.review div { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 15px; color: var(--muted); }
+.review b { color: var(--ink); font-weight: 700; }
+.mark { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--surface); }
+.mark.y { background: var(--ok); } .mark.n { background: var(--bad); }
+.copied { font-size: 14px; color: var(--ok); margin-top: 8px; min-height: 1.4em; }
+
+.screen { animation: in .35s ease both; }
+@keyframes in { from { transform: translateY(8px); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .screen { animation: none; } .vehicle, .vehicle:hover { transition: none; transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="16" r="3.5"/><circle cx="18" cy="16" r="3.5"/><path d="M6 16l4-7h5l3 7M10 9l2 7"/></svg></span>
+      Op weg met de fiets
+    </div>
+    <button class="back" id="backBtn" hidden aria-label="Terug naar keuze">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>Ander voertuig
+    </button>
+  </header>
+  <main id="app"></main>
+</div>
+
+<script>
+const ICONS = {
+  fiets: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="28" r="10"/><circle cx="56" cy="28" r="10"/><path d="M14 28l12-15h18l12 15M26 13l8 15H14M34 28l10-15M44 13l-2-6h6M22 9h8"/></svg>`,
+  ebike: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="28" r="10"/><circle cx="56" cy="28" r="10"/><path d="M14 28l12-15h18l12 15M26 13l8 15H14M34 28l10-15M44 13l-2-6h6M22 9h8"/><path d="M33 15l-3 6h5l-3 6" stroke-width="2.4"/></svg>`,
+  speed: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="28" r="10"/><circle cx="58" cy="28" r="10"/><path d="M20 28l11-15h16l11 15M31 13l7 15H20M38 28l9-15M47 13l-2-6h6M28 9h7"/><path d="M2 14h10M4 21h7M2 28h5" stroke-width="2.4"/></svg>`,
+  bakfiets: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="32" r="7"/><circle cx="58" cy="28" r="10"/><path d="M3 14h22l-3 12H6z"/><path d="M22 26l8 6h10l18-4M40 32l6-17h-6M46 15l3-7h5M36 11h8"/></svg>`,
+  longtail: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="28" r="9"/><circle cx="59" cy="28" r="9"/><path d="M59 28L50 14H30M30 14l-8 14h14l14-14M30 14l-3-7M24 7h7M11 28l11-16M50 14h16M52 20v-6M62 20v-6"/><path d="M50 9h14" stroke-width="4"/></svg>`
+};
+const ARROW = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+
+const VEHICLES = {
+  fiets: {
+    name: "Gewone fiets", sub: "Stadsfiets, racefiets, mountainbike",
+    tip: "Zorg dat je fietslichten het altijd doen: een set oplaadbare lampjes in je tas redt je avondrit.",
+    q: [
+      { q: "Welke fietsverlichting is verplicht als het donker is?", a: ["Wit of geel licht vooraan en rood licht achteraan", "Alleen een rood licht achteraan", "Geen, reflectoren volstaan"], c: 0,
+        x: "Bij duisternis of zicht onder 200 meter moet je een wit of geel licht vooraan en een rood licht achteraan voeren. Knipperende lampjes zijn toegestaan." },
+      { q: "Je fietst in een fietsstraat. Mag een auto je inhalen?", a: ["Ja, als hij langzaam rijdt", "Nee, auto's mogen fietsers niet inhalen", "Ja, maar alleen buiten de spits"], c: 1,
+        x: "In een fietsstraat zijn fietsers de baas: auto's mogen er niet sneller dan 30 km/u en mogen fietsers niet inhalen." },
+      { q: "Wat betekent een bordje met een fiets en een pijl naar rechts onder het verkeerslicht?", a: ["Fietsers mogen bij rood rechtsaf, met voorrang voor de anderen", "Fietsers moeten altijd rechtsaf", "Er ligt rechts een fietsenstalling"], c: 0,
+        x: "Met dat bord (B22) mag je bij rood of oranje toch rechtsaf. Je moet wel voorrang geven aan voetgangers en ander verkeer." },
+      { q: "Mag je je smartphone in de hand houden tijdens het fietsen?", a: ["Ja, om te navigeren", "Nee, dat is verboden", "Ja, op een fietspad"], c: 1,
+        x: "Een gsm vasthouden tijdens het fietsen is verboden en kan een boete opleveren. Een stevige houder op je stuur mag wel." },
+      { q: "Je staat aan een kruispunt naast een vrachtwagen die rechtsaf wil. Waar sta je het veiligst?", a: ["Rechts naast de cabine", "Vlak achter de rechterhoek van de oplegger", "Ruim achter de vrachtwagen, of duidelijk ervoor"], c: 2,
+        x: "Rechts naast een vrachtwagen zit je in de dode hoek. Blijf ruim achter de vrachtwagen of sta ver genoeg ervoor zodat de chauffeur je ziet." },
+      { q: "Tot welke leeftijd mogen kinderen op het voetpad fietsen?", a: ["Tot 10 jaar", "Tot 12 jaar", "Nooit"], c: 0,
+        x: "Kinderen jonger dan 10 jaar mogen op het voetpad fietsen, zolang ze voetgangers niet hinderen of in gevaar brengen." }
+    ]
+  },
+  ebike: {
+    name: "Elektrische fiets", sub: "Trapondersteuning tot 25 km/u",
+    tip: "Andere weggebruikers schatten je snelheid vaak te laag in. Maak oogcontact aan kruispunten.",
+    q: [
+      { q: "Tot welke snelheid mag de motor van een gewone elektrische fiets helpen?", a: ["25 km/u", "35 km/u", "45 km/u"], c: 0,
+        x: "Een elektrische fiets (pedelec) ondersteunt tot 25 km/u met een motor van maximaal 250 watt. Sneller trappen mag, maar dan zonder hulp." },
+      { q: "Wat heb je wettelijk nodig voor een elektrische fiets tot 25 km/u?", a: ["Een rijbewijs AM", "Een nummerplaat en verzekering", "Niets extra, dezelfde regels als een gewone fiets"], c: 2,
+        x: "Een pedelec valt onder de regels van een gewone fiets: geen rijbewijs, nummerplaat of helmplicht. Een helm blijft wel een slim idee." },
+      { q: "Je laat je e-bike opdrijven zodat hij tot 32 km/u ondersteunt. Wat gebeurt er?", a: ["Niets, zolang je het fietspad gebruikt", "Hij is geen fiets meer en je rijdt dan onverzekerd en zonder correcte inschrijving", "Je krijgt enkel een waarschuwing"], c: 1,
+        x: "Een opgedreven e-bike voldoet niet meer aan de regels voor een fiets. Bij een ongeval kan je verzekering weigeren te betalen." },
+      { q: "Hoe zorg je in de winter het best voor je batterij?", a: ["Laten opladen in een koude garage", "Binnen bewaren en op kamertemperatuur opladen", "Volledig leeg laten lopen voor je oplaadt"], c: 1,
+        x: "Lithiumbatterijen houden niet van vrieskou. Laad op bij kamertemperatuur en bewaar de batterij binnen, dan gaat ze langer mee." },
+      { q: "Waarom heb je met een e-bike een langere remweg?", a: ["Door het hogere gewicht en de hogere snelheid", "Omdat de motor tegenwerkt", "Dat klopt niet, de remweg is gelijk"], c: 0,
+        x: "Een e-bike is zwaarder en je rijdt gemiddeld sneller. Rem dus vroeger en houd meer afstand." },
+      { q: "Je nadert een kruispunt aan 24 km/u. Waar moet je extra op letten?", a: ["Op niets, je hebt toch voorrang", "Automobilisten kunnen denken dat je trager rijdt en je de weg afsnijden", "Dat je de ondersteuning uitzet"], c: 1,
+        x: "Wie een fietser ziet, verwacht vaak 15 km/u. Anticipeer en rem tijdig als iemand je niet goed lijkt in te schatten." }
+    ]
+  },
+  speed: {
+    name: "Speed pedelec", sub: "Ondersteuning tot 45 km/u",
+    tip: "Pas je snelheid aan op drukke fietspaden. Met 45 km/u passeer je andere fietsers sneller dan ze verwachten.",
+    q: [
+      { q: "Tot welke snelheid krijg je ondersteuning op een speed pedelec?", a: ["25 km/u", "45 km/u", "60 km/u"], c: 1,
+        x: "Een speed pedelec ondersteunt tot 45 km/u. Daarom valt hij in België onder de bromfietsen klasse P." },
+      { q: "Welk rijbewijs heb je nodig voor een speed pedelec?", a: ["Geen", "Rijbewijs AM (zit ook in rijbewijs B)", "Rijbewijs A"], c: 1,
+        x: "Je hebt minstens rijbewijs AM nodig. Heb je een rijbewijs B, dan ben je in orde." },
+      { q: "Welke helm is verplicht?", a: ["Geen helm verplicht", "Elke gewone fietshelm", "Een speed-pedelechelm (NTA 8776) of een bromfietshelm"], c: 2,
+        x: "Een helm is verplicht: een bromfietshelm of een speciale speed-pedelechelm volgens de norm NTA 8776, die meer van je hoofd beschermt." },
+      { q: "Wat moet er nog in orde zijn?", a: ["Een nummerplaat en een verzekering", "Alleen een fietsbel", "Een jaarlijkse keuring"], c: 0,
+        x: "Een speed pedelec moet ingeschreven zijn met een nummerplaat en verzekerd zijn, net als een bromfiets." },
+      { q: "Je rijdt buiten de bebouwde kom en er ligt een fietspad. Waar rijd je?", a: ["Op het fietspad", "Op de rijbaan, je bent een bromfiets", "Je kiest zelf"], c: 0,
+        x: "Buiten de bebouwde kom moet je het fietspad volgen als er een is. Binnen de bebouwde kom mag je kiezen tussen fietspad en rijbaan." },
+      { q: "Je haalt een groepje schoolkinderen in op het fietspad. Wat doe je?", a: ["Bellen en aan 40 km/u voorbij", "Vertragen, ruim afstand houden en pas inhalen als het veilig kan", "Even op het voetpad uitwijken"], c: 1,
+        x: "Het snelheidsverschil met andere fietsers is groot. Vertraag, waarschuw tijdig en haal in met voldoende ruimte." }
+    ]
+  },
+  bakfiets: {
+    name: "Bakfiets", sub: "Met kinderen, boodschappen of lading",
+    tip: "Rem en draai rustig met een volle bak: je bakfiets reageert trager dan je gewone fiets.",
+    q: [
+      { q: "Je bakfiets is breder dan 1 meter. Moet je het fietspad gebruiken?", a: ["Ja, altijd", "Nee, je mag ook de rijbaan gebruiken", "Alleen als er geen auto's zijn"], c: 1,
+        x: "Fietsen met meer dan twee wielen, met een aanhangwagen of breder dan 1 meter mogen ook op de rijbaan rijden, ook als er een fietspad is." },
+      { q: "Waarom neem je met een driewielbakfiets een bocht traag?", a: ["Omdat hij anders kan kantelen", "Om de banden te sparen", "Dat hoeft niet, drie wielen zijn altijd stabiel"], c: 0,
+        x: "Een driewieler leunt niet mee in de bocht. Te snel draaien kan hem doen kantelen. Vertraag voor de bocht, niet erin." },
+      { q: "Je vervoert kinderen in de bak. Wat is het belangrijkst?", a: ["Een regenhoes", "Dat ze vastzitten met de gordels", "Dat ze naar achteren kijken"], c: 1,
+        x: "Gebruik altijd de gordels in de bak. Een helm voor de kinderen wordt sterk aangeraden." },
+      { q: "Hoe verandert je remweg met een volle bak?", a: ["Hij wordt korter", "Hij blijft gelijk", "Hij wordt langer"], c: 2,
+        x: "Hoe zwaarder de lading, hoe langer je nodig hebt om te stoppen. Houd meer afstand en rem vroeger." },
+      { q: "Waar moet je bij afslaan extra op letten?", a: ["Je bak steekt ver voor je uit en je draaicirkel is groter", "Nergens op, een bakfiets draait scherper", "Dat je je arm niet uitsteekt"], c: 0,
+        x: "De bak zit al op het kruispunt voor jij er bent. Kijk vooruit, steek je arm uit en neem een ruime bocht." },
+      { q: "Waar parkeer je je bakfiets het best?", a: ["Midden op het voetpad, dat mag", "Zo dat voetgangers, rolstoelen en kinderwagens vlot door kunnen", "In de fietsstraat"], c: 1,
+        x: "Je mag een fiets op het voetpad zetten als je voetgangers niet hindert. Met een bakfiets is dat snel het geval, dus kies je plek met zorg." }
+    ]
+  },
+  longtail: {
+    name: "Longtail", sub: "Verlengde bagagedrager voor kids of lading",
+    tip: "Laad zwaar en laag, en controleer het maximale gewicht dat de fabrikant toelaat.",
+    q: [
+      { q: "Je neemt een kind van 6 jaar mee achterop. Wat is verplicht?", a: ["Niets, als het zich goed vasthoudt", "Een aangepast zitje met voetsteunen", "Alleen een helm"], c: 1,
+        x: "Kinderen jonger dan 9 jaar moeten op een aangepast zitje zitten, met bescherming zodat hun voeten niet in de spaken raken." },
+      { q: "Waarvoor dienen wielafschermingen op een longtail?", a: ["Voor de looks", "Om te voorkomen dat voeten of kleding in het achterwiel raken", "Om sneller te rijden"], c: 1,
+        x: "Wielafschermingen en voetsteunen houden voetjes, sjaals en tassen uit de spaken." },
+      { q: "Hoe laad je zware boodschappen?", a: ["Zo hoog mogelijk, dan zie je ze", "Laag en zo centraal mogelijk", "Helemaal achteraan"], c: 1,
+        x: "Een laag zwaartepunt houdt je fiets stabiel. Zware spullen gaan laag in de tassen, verdeeld over beide kanten." },
+      { q: "Waarom is een brede dubbele standaard handig?", a: ["De fiets blijft stabiel staan terwijl kinderen op- en afstappen", "Hij maakt de fiets lichter", "Hij is verplicht"], c: 0,
+        x: "Met een brede standaard valt de fiets niet om als een kind op het zitje klimt of als je laadt." },
+      { q: "Je longtail is een stuk langer dan een gewone fiets. Wat betekent dat in het verkeer?", a: ["Niets", "Je achterkant heeft meer ruimte nodig bij inhalen en afslaan", "Je mag niet op het fietspad"], c: 1,
+        x: "Houd rekening met je lengte: wacht bij invoegen tot je volledige fiets ruimte heeft en kijk achterom voor je terug naar rechts gaat." },
+      { q: "Mag je samen met je passagier zoveel laden als je wil?", a: ["Ja, een longtail kan alles aan", "Nee, houd je aan het maximale totaalgewicht van de fabrikant", "Ja, zolang je stapvoets rijdt"], c: 1,
+        x: "Elke longtail heeft een maximaal totaalgewicht voor fietser, passagiers en lading. Daarboven worden remmen en frame overbelast." }
+    ]
+  }
+};
+
+const app = document.getElementById("app");
+const backBtn = document.getElementById("backBtn");
+let state = null;
+
+function esc(s) { return s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function renderHome() {
+  state = null;
+  backBtn.hidden = true;
+  app.innerHTML = `
+    <section class="screen">
+      <div class="hero">
+        <div class="eyebrow">Mobiliteitsquiz</div>
+        <h1>Hoe <span class="hl">fietsfit</span> ben jij?</h1>
+        <p class="lede">Kies waarmee je naar hier fietst en test in zes vragen hoe goed je de regels en trucjes voor jouw fiets kent.</p>
+      </div>
+      <div class="lane-rule" aria-hidden="true"></div>
+      <p class="pick-label">Waarmee rijd jij?</p>
+      <div class="vehicles">
+        ${Object.entries(VEHICLES).map(([id, v]) => `
+          <button class="vehicle" data-id="${id}">
+            <span class="ico" aria-hidden="true">${ICONS[id]}</span>
+            <span class="meta"><span class="name">${v.name}</span><span class="sub">${v.sub}</span></span>
+            <span class="go" aria-hidden="true">${ARROW}</span>
+          </button>`).join("")}
+      </div>
+      <p class="foot">Gebaseerd op de Belgische wegcode. Meer info op <a href="https://www.wegcode.be" target="_blank" rel="noopener">wegcode.be</a>.</p>
+    </section>`;
+  app.querySelectorAll(".vehicle").forEach(b => b.addEventListener("click", () => start(b.dataset.id)));
+}
+
+function start(id) {
+  state = { id, i: 0, score: 0, answers: [] };
+  try { history.replaceState(null, "", "#" + id); } catch (e) {}
+  backBtn.hidden = false;
+  renderQuestion();
+  window.scrollTo({ top: 0 });
+}
+
+function renderQuestion() {
+  const v = VEHICLES[state.id];
+  const item = v.q[state.i];
+  const total = v.q.length;
+  app.innerHTML = `
+    <section class="screen">
+      <div class="qhead">
+        <span class="ico" aria-hidden="true">${ICONS[state.id]}</span>
+        <div><div class="t">${v.name}</div><div class="c">Vraag ${state.i + 1} van ${total}</div></div>
+      </div>
+      <div class="progress" aria-hidden="true">${v.q.map((_, k) => `<span class="${k < state.i ? "done" : k === state.i ? "now" : ""}"></span>`).join("")}</div>
+      <h2 class="question">${esc(item.q)}</h2>
+      <div class="answers">
+        ${item.a.map((t, k) => `<button class="answer" data-k="${k}"><span class="k">${"ABC"[k]}</span><span>${esc(t)}</span></button>`).join("")}
+      </div>
+      <div id="after"></div>
+    </section>`;
+  app.querySelectorAll(".answer").forEach(b => b.addEventListener("click", () => choose(+b.dataset.k)));
+}
+
+function choose(k) {
+  const v = VEHICLES[state.id];
+  const item = v.q[state.i];
+  const ok = k === item.c;
+  if (ok) state.score++;
+  state.answers.push(ok);
+  app.querySelectorAll(".answer").forEach((b, idx) => {
+    b.disabled = true;
+    if (idx === item.c) b.classList.add("right");
+    else if (idx === k) b.classList.add("wrong");
+    else b.classList.add("dim");
+  });
+  const last = state.i === v.q.length - 1;
+  const after = document.getElementById("after");
+  after.innerHTML = `
+    <div class="explain" role="status"><strong>${ok ? "Juist!" : "Niet helemaal"}</strong><p>${esc(item.x)}</p></div>
+    <button class="cta" id="next">${last ? "Bekijk je score" : "Volgende vraag"} ${ARROW}</button>`;
+  const next = document.getElementById("next");
+  next.addEventListener("click", () => { if (last) renderResult(); else { state.i++; renderQuestion(); } });
+  next.focus({ preventScroll: true });
+  after.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
+}
+
+function renderResult() {
+  const v = VEHICLES[state.id];
+  const total = v.q.length, s = state.score;
+  const verdict = s === total ? "Fietsfit met glans" : s >= total - 2 ? "Goed op weg" : "Nog wat bijtrappen";
+  app.innerHTML = `
+    <section class="screen result">
+      <div class="eyebrow">${v.name} · jouw score</div>
+      <div class="score"><span class="n">${s}</span><span class="of">/ ${total}</span></div>
+      <p class="verdict">${verdict}</p>
+      <div class="lane-rule" aria-hidden="true"></div>
+      <div class="tipbox"><div class="eyebrow">Tip voor onderweg</div><p>${esc(v.tip)}</p></div>
+      <div class="review">${v.q.map((it, k) => `<div><span class="mark ${state.answers[k] ? "y" : "n"}">${state.answers[k] ? "✓" : "✕"}</span><span><b>${esc(it.q)}</b><br>${esc(it.a[it.c])}</span></div>`).join("")}</div>
+      <button class="cta" id="again">Probeer een ander voertuig ${ARROW}</button>
+      <button class="cta alt" id="share">Kopieer link naar deze quiz ${ARROW}</button>
+      <div class="copied" id="copied" role="status"></div>
+    </section>`;
+  window.scrollTo({ top: 0 });
+  document.getElementById("again").addEventListener("click", goHome);
+  document.getElementById("share").addEventListener("click", () => {
+    const url = location.href.split("#")[0] + "#" + state.id;
+    const msg = document.getElementById("copied");
+    navigator.clipboard.writeText(url).then(() => { msg.textContent = "Link gekopieerd."; }).catch(() => { msg.textContent = url; });
+  });
+}
+
+function goHome() {
+  try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  renderHome();
+  window.scrollTo({ top: 0 });
+}
+backBtn.addEventListener("click", goHome);
+
+const initial = (location.hash || "").slice(1);
+if (VEHICLES[initial]) start(initial); else renderHome();
+</script>
+
+</body>
+</html>

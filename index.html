@@ -8,11 +8,11 @@
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<meta name="apple-mobile-web-app-title" content="Fietsquiz">
+<meta name="apple-mobile-web-app-title" content="AZT quiz">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Fietsquiz Op Weg</title>
-<meta name="description" content="Kies je fiets en test je kennis van de verkeersregels in een korte quiz.">
+<title>AZT Mobiliteitsquiz</title>
+<meta name="description" content="Te voet, met de fiets of met de auto: test je kennis van de wegcode en verkeersveiligheid in een korte quiz.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
@@ -106,6 +106,13 @@ h1 .hl { color: var(--lane); }
 .install-btn svg { width: 15px; height: 15px; }
 .ios-hint { margin-top: 4px; padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 2px dashed var(--line); font-size: 15px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; }
 .ios-hint button { border: 0; background: transparent; cursor: pointer; color: var(--muted); font-size: 20px; line-height: 1; padding: 0 4px; }
+.modes { display: grid; gap: 12px; }
+.mode { grid-template-columns: 96px 1fr auto; padding-block: 16px; }
+.mode .ico { width: 96px; height: 64px; }
+.mode .ico svg { width: 80px; height: 48px; }
+.mode .name { font-size: 26px; }
+.mode.m-voet .ico { background: var(--ok-soft); color: var(--ok); }
+.mode.m-fiets .ico { background: var(--lane-soft); color: var(--lane); }
 .foot { color: var(--muted); font-size: 13px; margin-top: 26px; }
 .foot a { color: inherit; }
 
@@ -176,13 +183,13 @@ h1 .hl { color: var(--lane); }
   <header class="top">
     <div class="brand">
       <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="16" r="3.5"/><circle cx="18" cy="16" r="3.5"/><path d="M6 16l4-7h5l3 7M10 9l2 7"/></svg></span>
-      Op weg met de fiets
+      AZT Mobiliteitsquiz
     </div>
     <button class="install-btn" id="installBtn" hidden>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Installeer app
     </button>
-    <button class="back" id="backBtn" hidden aria-label="Terug naar keuze">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>Ander voertuig
+    <button class="back" id="backBtn" hidden >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg><span id="backLabel">Terug</span>
     </button>
   </header>
   <div class="ios-hint" id="iosHint" hidden role="status"><span>Tik onderaan in Safari op het deelicoon en kies <strong>Zet op beginscherm</strong>.</span><button id="iosClose" aria-label="Sluiten">×</button></div>
@@ -195,11 +202,65 @@ const ICONS = {
   ebike: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="28" r="10"/><circle cx="56" cy="28" r="10"/><path d="M14 28l12-15h18l12 15M26 13l8 15H14M34 28l10-15M44 13l-2-6h6M22 9h8"/><path d="M33 15l-3 6h5l-3 6" stroke-width="2.4"/></svg>`,
   speed: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="28" r="10"/><circle cx="58" cy="28" r="10"/><path d="M20 28l11-15h16l11 15M31 13l7 15H20M38 28l9-15M47 13l-2-6h6M28 9h7"/><path d="M2 14h10M4 21h7M2 28h5" stroke-width="2.4"/></svg>`,
   bakfiets: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="32" r="7"/><circle cx="58" cy="28" r="10"/><path d="M3 14h22l-3 12H6z"/><path d="M22 26l8 6h10l18-4M40 32l6-17h-6M46 15l3-7h5M36 11h8"/></svg>`,
+  voet: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="36" cy="6" r="4"/><path d="M35 12l-3 13-6 12M32 25l6 5 2 8M34 15l-7 7M34 15l7 5"/></svg>`,
+  auto: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 30H5v-8l4-3 9-2 7-8h20l9 8 7 2 2 3v8h-5M24 30h22"/><circle cx="17" cy="30" r="6"/><circle cx="53" cy="30" r="6"/><path d="M26 17h26M38 9v8"/></svg>`,
   longtail: `<svg viewBox="0 0 70 42" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="28" r="9"/><circle cx="59" cy="28" r="9"/><path d="M59 28L50 14H30M30 14l-8 14h14l14-14M30 14l-3-7M24 7h7M11 28l11-16M50 14h16M52 20v-6M62 20v-6"/><path d="M50 9h14" stroke-width="4"/></svg>`
 };
 const ARROW = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
 
 const VEHICLES = {
+  voet: {
+    name: "Te voet", sub: "Wandelen, of te voet naar bus, tram of trein", mode: true,
+    tip: "Kijk links, rechts en nog eens links, en maak oogcontact met chauffeurs voor je oversteekt.",
+    q: [
+      { t: "wegcode", q: "Je staat aan een zebrapad zonder verkeerslichten en wil oversteken. Wie heeft voorrang?", a: ["De auto's, tot ze stoppen", "Jij: bestuurders moeten je laten oversteken", "Wie het eerst aan het zebrapad is"], c: 1,
+        x: "Bestuurders moeten voetgangers laten oversteken die op het zebrapad lopen of duidelijk willen oversteken. Maak toch oogcontact voor je vertrekt." },
+      { t: "wegcode", q: "Er ligt een zebrapad op 15 meter van jou. Waar steek je over?", a: ["Op het zebrapad", "Waar het je uitkomt", "Tussen de geparkeerde auto's"], c: 0,
+        x: "Ligt er een zebrapad op minder dan 20 meter, dan moet je dat gebruiken." },
+      { t: "wegcode", q: "Er is geen voetpad en geen berm. Aan welke kant van de weg loop je?", a: ["Rechts, met het verkeer mee", "Links, zodat je het verkeer ziet aankomen", "In het midden van de weg"], c: 1,
+        x: "Moet je op de rijbaan lopen, dan loop je links, tegen het verkeer in, tenzij dat minder veilig is. Zo zie je wat er op je af komt." },
+      { t: "veiligheid", q: "Je wil oversteken en je bent een bericht aan het lezen. Wat doe je?", a: ["Verder lezen, je hoort de auto's wel", "Gsm wegsteken, kijken en dan pas oversteken", "Sneller stappen"], c: 1,
+        x: "Wie op zijn scherm kijkt, ziet en hoort verkeer veel minder goed. Kijk links, rechts en nog eens links voor je oversteekt." },
+      { t: "wegcode", q: "Je loopt in een woonerf. Wat geldt daar?", a: ["Voetgangers mogen de hele breedte van de weg gebruiken", "Voetgangers moeten op de stoep blijven", "Auto's hebben er voorrang"], c: 0,
+        x: "In een woonerf mogen voetgangers de hele breedte van de weg gebruiken en mogen kinderen er spelen. Bestuurders rijden er maximaal 20 km/u." },
+      { t: "veiligheid", q: "Je wandelt in het donker naar huis. Hoe zorg je dat je gezien wordt?", a: ["Donkere kleren zijn prima onder de straatlantaarns", "Draag lichte kleren en iets reflecterends, zoals een fluohesje of reflectoren", "Hard lopen"], c: 1,
+        x: "Een chauffeur ziet een voetganger in donkere kleren pas heel laat. Reflecterend materiaal valt al van ver op in de koplampen." },
+      { t: "wegcode", q: "Er is geen voetpad en geen berm, wel een fietspad. Mag je daarop lopen?", a: ["Nee, nooit", "Ja, maar je moet fietsers voorrang geven", "Ja, en fietsers moeten voor jou uitwijken"], c: 1,
+        x: "Zonder voetpad of berm mag je het fietspad gebruiken, maar fietsers hebben er voorrang. Loop zo dicht mogelijk aan de rand." },
+      { t: "veiligheid", q: "Een vrachtwagen of bus wil afslaan bij het zebrapad. Wat doe je?", a: ["Meteen oversteken, je hebt voorrang", "Wachten tot je zeker bent dat de chauffeur je gezien heeft", "Vlak naast de cabine gaan staan"], c: 1,
+        x: "Vlak voor of naast een vrachtwagen of bus sta je in de dode hoek. Voorrang hebben helpt niet als de chauffeur je niet ziet." },
+      { t: "wegcode", q: "De rode lichten aan een overweg knipperen, maar de slagbomen zijn nog open. Wat doe je?", a: ["Snel nog oversteken", "Wachten: bij knipperende rode lichten mag je niet oversteken", "Oversteken als je geen trein ziet"], c: 1,
+        x: "Zodra de rode lichten knipperen of de bel rinkelt, mag je de overweg niet meer op. Een trein kan niet uitwijken of snel stoppen." },
+      { t: "veiligheid", q: "Het voetgangerslicht springt op rood als je halverwege bent. Wat doe je?", a: ["Rustig verder naar de overkant", "Terugkeren naar waar je vandaan kwam", "Blijven staan op de streep in het midden"], c: 0,
+        x: "Als je al aan het oversteken bent, loop je rustig door naar de overkant. Begin niet meer aan een oversteek als het licht al rood is." }
+    ]
+  },
+  auto: {
+    name: "Met de auto", sub: "Als bestuurder, alleen of samen", mode: true,
+    tip: "Verwacht fietsers en voetgangers bij elke afslag. Een blik over je schouder kost niets.",
+    q: [
+      { t: "wegcode", q: "Wat is in Vlaanderen de maximumsnelheid buiten de bebouwde kom als er geen borden staan?", a: ["50 km/u", "70 km/u", "90 km/u"], c: 1,
+        x: "Sinds 2017 geldt in Vlaanderen buiten de bebouwde kom standaard 70 km/u, tenzij borden iets anders aangeven." },
+      { t: "wegcode", q: "Je rijdt in een fietsstraat achter een fietser. Wat mag je doen?", a: ["Inhalen als er plaats is", "Achter de fietser blijven: inhalen mag niet en je rijdt max 30 km/u", "Toeteren zodat de fietser opzij gaat"], c: 1,
+        x: "In een fietsstraat zijn fietsers de baas. Auto's mogen er niet sneller dan 30 km/u en mogen fietsers niet inhalen." },
+      { t: "wegcode", q: "Je slaat rechtsaf en op het fietspad rechts van je rijdt een fietser rechtdoor. Wie heeft voorrang?", a: ["Jij, want je zat er eerst", "De fietser die rechtdoor rijdt", "Wie het snelst is"], c: 1,
+        x: "Wie afslaat, moet voorrang geven aan fietsers en voetgangers die rechtdoor gaan. Kijk in je spiegel en over je schouder." },
+      { t: "veiligheid", q: "Hoeveel zijdelingse afstand houd je minstens als je een fietser inhaalt?", a: ["30 centimeter", "Minstens 1 meter", "Afstand maakt niet uit als je traag rijdt"], c: 1,
+        x: "Houd minstens een meter afstand, buiten de bebouwde kom liefst nog meer. Een fietser kan uitwijken voor een put of windstoot." },
+      { t: "veiligheid", q: "Hoe open je het portier best als je geparkeerd staat?", a: ["Snel, dan sta je minder lang in de weg", "Met je hand die het verst van de deur zit, zodat je vanzelf achterom kijkt", "Pas als iemand toetert"], c: 1,
+        x: "Met die 'Dutch reach' draai je je lichaam en zie je fietsers die van achter komen. Zo voorkom je een portierongeval." },
+      { t: "wegcode", q: "Je staat stil voor een rood licht. Mag je je gsm vasthouden?", a: ["Ja, je rijdt niet", "Nee, ook stilstaand voor een rood licht neem je deel aan het verkeer", "Alleen om te bellen"], c: 1,
+        x: "Ook voor een rood licht of in de file ben je aan het rijden. Een gsm vasthouden is dan verboden. Gebruik een houder of handsfree." },
+      { t: "wegcode", q: "Wat is de alcohollimiet voor een gewone autobestuurder?", a: ["0,2 promille", "0,5 promille", "0,8 promille"], c: 1,
+        x: "De limiet is 0,5 promille. Voor professionele chauffeurs geldt 0,2 promille. Het veiligst is: wie rijdt, drinkt niet." },
+      { t: "wegcode", q: "Twee rijstroken lopen samen tot één. Wanneer voeg je in?", a: ["Zo vroeg mogelijk", "Pas bij de versmalling, om beurten (ritsen)", "Wie het grootst is, gaat eerst"], c: 1,
+        x: "Ritsen is verplicht: rijd door tot aan de versmalling en voeg daar om beurten in. Zo gebruikt iedereen de ruimte en loopt het vlotter." },
+      { t: "wegcode", q: "Je kind is 1,25 meter groot. Hoe vervoer je het in de auto?", a: ["Met gewoon de gordel", "In een aangepast kinderzitje", "Op schoot"], c: 1,
+        x: "Kinderen kleiner dan 1,35 meter moeten in een aangepast kinderzitje of zitverhoger, afgestemd op hun lengte of gewicht." },
+      { t: "wegcode", q: "Je wil een schoolstraat in tijdens de schooluren. Wat geldt er?", a: ["Je mag er stapvoets door", "Gemotoriseerd verkeer mag er tijdens die uren niet in, op een paar uitzonderingen na", "Alleen als je een kind afzet"], c: 1,
+        x: "Een schoolstraat is bij het begin en einde van de schooldag afgesloten voor auto's. Zet je kind een straat verder af en laat het het laatste stukje stappen." }
+    ]
+  },
   fiets: {
     name: "Gewone fiets", sub: "Stadsfiets, racefiets, mountainbike",
     tip: "Zorg dat je fietslichten het altijd doen: een set oplaadbare lampjes in je tas redt je avondrit.",
@@ -338,25 +399,59 @@ let state = null;
 
 function esc(s) { return s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 
+let screen = "home";
+
+function vehicleCard(id, extra = "") {
+  const v = VEHICLES[id] || MODES[id];
+  return `
+          <button class="vehicle ${extra}" data-id="${id}">
+            <span class="ico" aria-hidden="true">${ICONS[id === "fietsen" ? "fiets" : id]}</span>
+            <span class="meta"><span class="name">${v.name}</span><span class="sub">${v.sub}</span></span>
+            <span class="go" aria-hidden="true">${ARROW}</span>
+          </button>`;
+}
+const MODES = { fietsen: { name: "Met de fiets", sub: "Fiets, e-bike, speed pedelec, bakfiets of longtail" } };
+const BIKES = ["fiets", "ebike", "speed", "bakfiets", "longtail"];
+
 function renderHome() {
   state = null;
+  screen = "home";
   backBtn.hidden = true;
   app.innerHTML = `
     <section class="screen">
       <div class="hero">
-        <div class="eyebrow">Mobiliteitsquiz</div>
+        <div class="eyebrow">Mobiliteitsactie</div>
+        <h1>Hoe <span class="hl">verkeersfit</span> ben jij?</h1>
+        <p class="lede">Hoe kom jij naar het werk? Kies hieronder en test in tien vragen hoe goed je de wegcode en de risico's onderweg kent.</p>
+      </div>
+      <div class="lane-rule" aria-hidden="true"></div>
+      <p class="pick-label">Hoe kom jij naar het werk?</p>
+      <div class="vehicles modes">
+        ${vehicleCard("voet", "mode m-voet")}
+        ${vehicleCard("fietsen", "mode m-fiets")}
+        ${vehicleCard("auto", "mode m-auto")}
+      </div>
+      <p class="foot">Gebaseerd op de Belgische wegcode. Meer info op <a href="https://www.wegcode.be" target="_blank" rel="noopener">wegcode.be</a>.</p>
+    </section>`;
+  app.querySelectorAll(".vehicle").forEach(b => b.addEventListener("click", () => b.dataset.id === "fietsen" ? showBikes() : start(b.dataset.id)));
+  renderInstall();
+}
+
+function renderBikes() {
+  state = null;
+  screen = "bikes";
+  backBtn.hidden = false;
+  app.innerHTML = `
+    <section class="screen">
+      <div class="hero">
+        <div class="eyebrow">Met de fiets</div>
         <h1>Hoe <span class="hl">fietsfit</span> ben jij?</h1>
         <p class="lede">Kies waarmee je naar hier fietst en test in tien vragen hoe goed je de regels en trucjes voor jouw fiets kent.</p>
       </div>
       <div class="lane-rule" aria-hidden="true"></div>
       <p class="pick-label">Waarmee rijd jij?</p>
       <div class="vehicles">
-        ${Object.entries(VEHICLES).map(([id, v]) => `
-          <button class="vehicle" data-id="${id}">
-            <span class="ico" aria-hidden="true">${ICONS[id]}</span>
-            <span class="meta"><span class="name">${v.name}</span><span class="sub">${v.sub}</span></span>
-            <span class="go" aria-hidden="true">${ARROW}</span>
-          </button>`).join("")}
+        ${BIKES.map(id => vehicleCard(id)).join("")}
       </div>
       <p class="foot">Gebaseerd op de Belgische wegcode. Meer info op <a href="https://www.wegcode.be" target="_blank" rel="noopener">wegcode.be</a>.</p>
     </section>`;
@@ -364,8 +459,16 @@ function renderHome() {
   renderInstall();
 }
 
+function showBikes() {
+  try { history.replaceState(null, "", "#fietsen"); } catch (e) {}
+  iosHint.hidden = true;
+  renderBikes();
+  window.scrollTo({ top: 0 });
+}
+
 function start(id) {
   state = { id, i: 0, score: 0, answers: [] };
+  screen = "quiz";
   try { history.replaceState(null, "", "#" + id); } catch (e) {}
   backBtn.hidden = false;
   renderInstall();
@@ -378,6 +481,8 @@ function renderQuestion() {
   const v = VEHICLES[state.id];
   const item = v.q[state.i];
   const total = v.q.length;
+  // antwoorden in willekeurige volgorde, zodat het juiste antwoord niet altijd op dezelfde plek staat
+  state.order = item.a.map((_, k) => k).sort(() => Math.random() - 0.5);
   app.innerHTML = `
     <section class="screen">
       <div class="qhead">
@@ -388,7 +493,7 @@ function renderQuestion() {
       <span class="tag ${item.t || "fiets"}">${item.t === "wegcode" ? "Wegcode" : item.t === "veiligheid" ? "Verkeersveiligheid" : "Jouw " + v.name.toLowerCase()}</span>
       <h2 class="question">${esc(item.q)}</h2>
       <div class="answers">
-        ${item.a.map((t, k) => `<button class="answer" data-k="${k}"><span class="k">${"ABC"[k]}</span><span>${esc(t)}</span></button>`).join("")}
+        ${state.order.map((k, pos) => `<button class="answer" data-k="${k}"><span class="k">${"ABC"[pos]}</span><span>${esc(item.a[k])}</span></button>`).join("")}
       </div>
       <div id="after"></div>
     </section>`;
@@ -401,7 +506,8 @@ function choose(k) {
   const ok = k === item.c;
   if (ok) state.score++;
   state.answers.push(ok);
-  app.querySelectorAll(".answer").forEach((b, idx) => {
+  app.querySelectorAll(".answer").forEach(b => {
+    const idx = +b.dataset.k;
     b.disabled = true;
     if (idx === item.c) b.classList.add("right");
     else if (idx === k) b.classList.add("wrong");
@@ -421,7 +527,8 @@ function choose(k) {
 function renderResult() {
   const v = VEHICLES[state.id];
   const total = v.q.length, s = state.score;
-  const verdict = s === total ? "Fietsfit met glans" : s >= total - 3 ? "Goed op weg" : "Nog wat bijtrappen";
+  const bike = !v.mode;
+  const verdict = s === total ? (bike ? "Fietsfit met glans" : "Verkeersfit met glans") : s >= total - 3 ? "Goed op weg" : (bike ? "Nog wat bijtrappen" : "Nog wat oefenen");
   app.innerHTML = `
     <section class="screen result">
       <div class="eyebrow">${v.name} · jouw score</div>
@@ -430,12 +537,12 @@ function renderResult() {
       <div class="lane-rule" aria-hidden="true"></div>
       <div class="tipbox"><div class="eyebrow">Tip voor onderweg</div><p>${esc(v.tip)}</p></div>
       <div class="review">${v.q.map((it, k) => `<div><span class="mark ${state.answers[k] ? "y" : "n"}">${state.answers[k] ? "✓" : "✕"}</span><span><b>${esc(it.q)}</b><br>${esc(it.a[it.c])}</span></div>`).join("")}</div>
-      <button class="cta" id="again">Probeer een ander voertuig ${ARROW}</button>
+      <button class="cta" id="again">${bike ? "Probeer een andere fiets" : "Kies een ander vervoermiddel"} ${ARROW}</button>
       <button class="cta alt" id="share">Kopieer link naar deze quiz ${ARROW}</button>
       <div class="copied" id="copied" role="status"></div>
     </section>`;
   window.scrollTo({ top: 0 });
-  document.getElementById("again").addEventListener("click", goHome);
+  document.getElementById("again").addEventListener("click", bike ? showBikes : goHome);
   document.getElementById("share").addEventListener("click", () => {
     const url = location.href.split("#")[0] + "#" + state.id;
     const msg = document.getElementById("copied");
@@ -448,7 +555,7 @@ function goHome() {
   renderHome();
   window.scrollTo({ top: 0 });
 }
-backBtn.addEventListener("click", goHome);
+backBtn.addEventListener("click", () => (screen === "quiz" && !VEHICLES[state.id].mode) ? showBikes() : goHome());
 
 // Installeren als app
 let installPrompt = null;
@@ -477,7 +584,7 @@ if ("serviceWorker" in navigator) {
 }
 
 const initial = (location.hash || "").slice(1);
-if (VEHICLES[initial]) start(initial); else renderHome();
+if (VEHICLES[initial]) start(initial); else if (initial === "fietsen") renderBikes(); else renderHome();
 </script>
 
 </body>

@@ -1,9 +1,9 @@
-# Mobiliteitsquiz
+# AZT Mobiliteitsquiz
 
-Fietsquiz voor de mobiliteitsactie: kies je voertuig (gewone fiets, elektrische fiets, speed pedelec, bakfiets of longtail) en beantwoord tien vragen over je fiets, de Belgische wegcode en verkeersveiligheid.
+Quiz voor de mobiliteitsactie. Kies hoe je naar het werk komt (te voet, met de fiets of met de auto) en beantwoord tien vragen over de Belgische wegcode en verkeersveiligheid. Bij de fiets kies je eerst je type: gewone fiets, elektrische fiets, speed pedelec, bakfiets of longtail.
 
 Online via GitHub Pages: https://obscuritatis.github.io/mobiliteitsquiz/
 
-Rechtstreeks naar één quiz: voeg `#fiets`, `#ebike`, `#speed`, `#bakfiets` of `#longtail` toe aan het adres.
+Rechtstreeks naar één quiz: voeg `#voet`, `#auto`, `#fietsen` (keuze van fiets), `#fiets`, `#ebike`, `#speed`, `#bakfiets` of `#longtail` toe aan het adres.
 
-Alles zit in één bestand: `index.html`. Vragen aanpassen kan in het blok `VEHICLES` in dat bestand.
+De quiz zit in `index.html`; vragen aanpassen kan in het blok `VEHICLES`. De app is installeerbaar (manifest, iconen in `icons/`, `sw.js` voor offline gebruik).

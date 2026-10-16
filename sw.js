@@ -1,5 +1,5 @@
 // Bewaart de quiz op het toestel zodat hij ook zonder internet opent.
-const CACHE = "fietsquiz-v2";
+const CACHE = "azt-quiz-v3";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon-32.png"];
 
 self.addEventListener("install", e => {

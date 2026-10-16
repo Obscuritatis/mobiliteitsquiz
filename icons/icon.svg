@@ -1,9 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <rect width="512" height="512" fill="#C2412B"/>
-  <circle cx="256" cy="232" r="150" fill="#F2C230"/>
-  <g transform="translate(116 152) scale(4)" fill="none" stroke="#17201E" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="14" cy="28" r="10"/><circle cx="56" cy="28" r="10"/>
-    <path d="M14 28l12-15h18l12 15M26 13l8 15H14M34 28l10-15M44 13l-2-6h6M22 9h8"/>
-  </g>
-  <g fill="#F3F4EF"><rect x="96" y="410" width="56" height="16" rx="3"/><rect x="186" y="410" width="56" height="16" rx="3"/><rect x="276" y="410" width="56" height="16" rx="3"/><rect x="366" y="410" width="56" height="16" rx="3"/></g>
+  <circle cx="256" cy="236" r="160" fill="#F2C230"/>
+  <text x="256" y="262" text-anchor="middle" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-weight="900" font-size="128" fill="#17201E">AZT</text>
+  <text x="262" y="318" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="800" font-size="40" letter-spacing="12" fill="#C2412B">QUIZ</text>
+  <g fill="#F3F4EF"><rect x="96" y="420" width="56" height="16" rx="3"/><rect x="186" y="420" width="56" height="16" rx="3"/><rect x="276" y="420" width="56" height="16" rx="3"/><rect x="366" y="420" width="56" height="16" rx="3"/></g>
 </svg>

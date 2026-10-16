@@ -1,0 +1,1750 @@
+{
+  "_uitleg": [
+    "Vragenlijst van de AZT Mobiliteitsquiz.",
+    "modus 'vast': de quiz toont de vragen met \"actief\": true, in deze volgorde.",
+    "modus 'willekeurig': de quiz kiest bij elke start 'aantal' vragen willekeurig uit alle vragen van die quiz (actief of niet).",
+    "Een vraag wisselen: zet \"actief\" van de ene vraag op false en van een andere op true. Houd per quiz 10 actieve vragen.",
+    "juist = nummer van het juiste antwoord, te tellen vanaf 0 (0 = eerste antwoord). De volgorde van de antwoorden wordt in de app altijd door elkaar gezet.",
+    "soort = wegcode, veiligheid of voertuig (vragen over het voertuig zelf)."
+  ],
+  "modus": "vast",
+  "aantal": 10,
+  "quizzen": {
+    "voet": {
+      "naam": "Te voet",
+      "uitleg": "Wandelen, of te voet naar bus, tram of trein",
+      "fietstype": false,
+      "tip": "Kijk links, rechts en nog eens links, en maak oogcontact met chauffeurs voor je oversteekt.",
+      "vragen": [
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je staat aan een zebrapad zonder verkeerslichten en wil oversteken. Wie heeft voorrang?",
+          "antwoorden": [
+            "De auto's, tot ze stoppen",
+            "Jij: bestuurders moeten je laten oversteken",
+            "Wie het eerst aan het zebrapad is"
+          ],
+          "juist": 1,
+          "uitleg": "Bestuurders moeten voetgangers laten oversteken die op het zebrapad lopen of duidelijk willen oversteken. Maak toch oogcontact voor je vertrekt."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Er ligt een zebrapad op 15 meter van jou. Waar steek je over?",
+          "antwoorden": [
+            "Op het zebrapad",
+            "Waar het je uitkomt",
+            "Tussen de geparkeerde auto's"
+          ],
+          "juist": 0,
+          "uitleg": "Ligt er een zebrapad op minder dan 20 meter, dan moet je dat gebruiken."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Er is geen voetpad en geen berm. Aan welke kant van de weg loop je?",
+          "antwoorden": [
+            "Rechts, met het verkeer mee",
+            "Links, zodat je het verkeer ziet aankomen",
+            "In het midden van de weg"
+          ],
+          "juist": 1,
+          "uitleg": "Moet je op de rijbaan lopen, dan loop je links, tegen het verkeer in, tenzij dat minder veilig is. Zo zie je wat er op je af komt."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Je wil oversteken en je bent een bericht aan het lezen. Wat doe je?",
+          "antwoorden": [
+            "Verder lezen, je hoort de auto's wel",
+            "Gsm wegsteken, kijken en dan pas oversteken",
+            "Sneller stappen"
+          ],
+          "juist": 1,
+          "uitleg": "Wie op zijn scherm kijkt, ziet en hoort verkeer veel minder goed. Kijk links, rechts en nog eens links voor je oversteekt."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je loopt in een woonerf. Wat geldt daar?",
+          "antwoorden": [
+            "Voetgangers mogen de hele breedte van de weg gebruiken",
+            "Voetgangers moeten op de stoep blijven",
+            "Auto's hebben er voorrang"
+          ],
+          "juist": 0,
+          "uitleg": "In een woonerf mogen voetgangers de hele breedte van de weg gebruiken en mogen kinderen er spelen. Bestuurders rijden er maximaal 20 km/u."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Je wandelt in het donker naar huis. Hoe zorg je dat je gezien wordt?",
+          "antwoorden": [
+            "Donkere kleren zijn prima onder de straatlantaarns",
+            "Draag lichte kleren en iets reflecterends, zoals een fluohesje of reflectoren",
+            "Hard lopen"
+          ],
+          "juist": 1,
+          "uitleg": "Een chauffeur ziet een voetganger in donkere kleren pas heel laat. Reflecterend materiaal valt al van ver op in de koplampen."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Er is geen voetpad en geen berm, wel een fietspad. Mag je daarop lopen?",
+          "antwoorden": [
+            "Nee, nooit",
+            "Ja, maar je moet fietsers voorrang geven",
+            "Ja, en fietsers moeten voor jou uitwijken"
+          ],
+          "juist": 1,
+          "uitleg": "Zonder voetpad of berm mag je het fietspad gebruiken, maar fietsers hebben er voorrang. Loop zo dicht mogelijk aan de rand."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Een vrachtwagen of bus wil afslaan bij het zebrapad. Wat doe je?",
+          "antwoorden": [
+            "Meteen oversteken, je hebt voorrang",
+            "Wachten tot je zeker bent dat de chauffeur je gezien heeft",
+            "Vlak naast de cabine gaan staan"
+          ],
+          "juist": 1,
+          "uitleg": "Vlak voor of naast een vrachtwagen of bus sta je in de dode hoek. Voorrang hebben helpt niet als de chauffeur je niet ziet."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "De rode lichten aan een overweg knipperen, maar de slagbomen zijn nog open. Wat doe je?",
+          "antwoorden": [
+            "Snel nog oversteken",
+            "Wachten: bij knipperende rode lichten mag je niet oversteken",
+            "Oversteken als je geen trein ziet"
+          ],
+          "juist": 1,
+          "uitleg": "Zodra de rode lichten knipperen of de bel rinkelt, mag je de overweg niet meer op. Een trein kan niet uitwijken of snel stoppen."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Het voetgangerslicht springt op rood als je halverwege bent. Wat doe je?",
+          "antwoorden": [
+            "Rustig verder naar de overkant",
+            "Terugkeren naar waar je vandaan kwam",
+            "Blijven staan op de streep in het midden"
+          ],
+          "juist": 0,
+          "uitleg": "Als je al aan het oversteken bent, loop je rustig door naar de overkant. Begin niet meer aan een oversteek als het licht al rood is."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je wandelt met oortjes in en de muziek luid. Wat is het risico?",
+          "antwoorden": [
+            "Geen, voetgangers hebben altijd voorrang",
+            "Je hoort fietsers, bellen en naderende auto's veel minder goed",
+            "Je loopt trager"
+          ],
+          "juist": 1,
+          "uitleg": "Ook als voetganger helpt je gehoor om verkeer op te merken, zeker stille e-bikes en elektrische auto's. Zet het volume laag."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Er staan verkeerslichten voor voetgangers. Wanneer mag je oversteken?",
+          "antwoorden": [
+            "Als er geen auto aankomt",
+            "Alleen als het voetgangerslicht groen is",
+            "Altijd, voetgangers hebben voorrang"
+          ],
+          "juist": 1,
+          "uitleg": "Zijn er voetgangerslichten, dan moet je die volgen. Ook als de weg vrij lijkt, wacht je op groen."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Waarom steek je beter niet over tussen geparkeerde auto's?",
+          "antwoorden": [
+            "Omdat het verboden is om stil te staan",
+            "Omdat chauffeurs je pas zien als je al op de weg staat",
+            "Omdat je dan langer moet wandelen"
+          ],
+          "juist": 1,
+          "uitleg": "Tussen geparkeerde auto's ben je onzichtbaar tot je de rijbaan op stapt. Kies een plek waar je goed ziet en gezien wordt, liefst een zebrapad."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je stapt uit de bus en wil de straat oversteken. Wat doe je?",
+          "antwoorden": [
+            "Meteen voor de bus langs oversteken",
+            "Wachten tot de bus vertrokken is, zodat je de weg goed kan zien",
+            "Achter de bus de straat op lopen"
+          ],
+          "juist": 1,
+          "uitleg": "Een stilstaande bus neemt je zicht weg en verbergt jou voor andere bestuurders. Wacht tot hij weg is en steek dan over."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Een auto rijdt achteruit een oprit uit terwijl jij op het voetpad loopt. Wat doe je?",
+          "antwoorden": [
+            "Doorlopen, je bent op het voetpad",
+            "Stoppen en wachten: de bestuurder ziet je misschien niet",
+            "Op de motorkap kloppen"
+          ],
+          "juist": 1,
+          "uitleg": "Achteruitrijdende bestuurders zien laag of dicht bij de auto vaak niets. Ga ervan uit dat je niet gezien bent."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Hoe steek je als voetganger het veiligst over aan een rotonde?",
+          "antwoorden": [
+            "Dwars over het middeneiland",
+            "Op het zebrapad op de toe- of afrit, een stuk van de rotonde af",
+            "Waar het verkeer het drukst is, dan rijden auto's traag"
+          ],
+          "juist": 1,
+          "uitleg": "Steek over op de zebrapaden aan de takken van de rotonde. Bestuurders die de rotonde verlaten, verwachten je daar."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je wandelt met een klein kind langs de weg. Aan welke kant laat je het lopen?",
+          "antwoorden": [
+            "Aan de kant van het verkeer",
+            "Aan de kant die het verst van het verkeer ligt, en hand in hand",
+            "Het maakt niet uit"
+          ],
+          "juist": 1,
+          "uitleg": "Laat een kind aan de veilige kant lopen, weg van de rijbaan, en houd zijn hand vast bij het oversteken."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Jij loopt op een zebrapad. Moeten ook fietsers voor jou stoppen?",
+          "antwoorden": [
+            "Nee, alleen auto's",
+            "Ja, ook fietsers en bromfietsers moeten je laten oversteken",
+            "Alleen als er een verkeerslicht is"
+          ],
+          "juist": 1,
+          "uitleg": "De voorrang van voetgangers op een zebrapad geldt tegenover alle bestuurders, dus ook fietsers en bromfietsers."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je wil tramsporen oversteken. Waarom ben je extra voorzichtig?",
+          "antwoorden": [
+            "Een tram kan niet uitwijken en heeft een lange remweg",
+            "Trams rijden altijd stapvoets",
+            "Trams moeten voor voetgangers stoppen"
+          ],
+          "juist": 0,
+          "uitleg": "Een tram is zwaar, kan niet uitwijken en heeft een lange remweg. Kijk naar beide kanten en steek niet over als er een tram nadert."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je ziet een ongeval met gewonden. Welk nummer bel je?",
+          "antwoorden": [
+            "101",
+            "112",
+            "1722"
+          ],
+          "juist": 1,
+          "uitleg": "Bel 112 voor de ambulance en brandweer. Zorg eerst dat je zelf veilig staat en help daarna waar je kan."
+        }
+      ]
+    },
+    "auto": {
+      "naam": "Met de auto",
+      "uitleg": "Als bestuurder, alleen of samen",
+      "fietstype": false,
+      "tip": "Verwacht fietsers en voetgangers bij elke afslag. Een blik over je schouder kost niets.",
+      "vragen": [
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Wat is in Vlaanderen de maximumsnelheid buiten de bebouwde kom als er geen borden staan?",
+          "antwoorden": [
+            "50 km/u",
+            "70 km/u",
+            "90 km/u"
+          ],
+          "juist": 1,
+          "uitleg": "Sinds 2017 geldt in Vlaanderen buiten de bebouwde kom standaard 70 km/u, tenzij borden iets anders aangeven."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je rijdt in een fietsstraat achter een fietser. Wat mag je doen?",
+          "antwoorden": [
+            "Inhalen als er plaats is",
+            "Achter de fietser blijven: inhalen mag niet en je rijdt max 30 km/u",
+            "Toeteren zodat de fietser opzij gaat"
+          ],
+          "juist": 1,
+          "uitleg": "In een fietsstraat zijn fietsers de baas. Auto's mogen er niet sneller dan 30 km/u en mogen fietsers niet inhalen."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je slaat rechtsaf en op het fietspad rechts van je rijdt een fietser rechtdoor. Wie heeft voorrang?",
+          "antwoorden": [
+            "Jij, want je zat er eerst",
+            "De fietser die rechtdoor rijdt",
+            "Wie het snelst is"
+          ],
+          "juist": 1,
+          "uitleg": "Wie afslaat, moet voorrang geven aan fietsers en voetgangers die rechtdoor gaan. Kijk in je spiegel en over je schouder."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Hoeveel zijdelingse afstand houd je minstens als je een fietser inhaalt?",
+          "antwoorden": [
+            "30 centimeter",
+            "Minstens 1 meter",
+            "Afstand maakt niet uit als je traag rijdt"
+          ],
+          "juist": 1,
+          "uitleg": "Houd minstens een meter afstand, buiten de bebouwde kom liefst nog meer. Een fietser kan uitwijken voor een put of windstoot."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Hoe open je het portier best als je geparkeerd staat?",
+          "antwoorden": [
+            "Snel, dan sta je minder lang in de weg",
+            "Met je hand die het verst van de deur zit, zodat je vanzelf achterom kijkt",
+            "Pas als iemand toetert"
+          ],
+          "juist": 1,
+          "uitleg": "Met die 'Dutch reach' draai je je lichaam en zie je fietsers die van achter komen. Zo voorkom je een portierongeval."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je staat stil voor een rood licht. Mag je je gsm vasthouden?",
+          "antwoorden": [
+            "Ja, je rijdt niet",
+            "Nee, ook stilstaand voor een rood licht neem je deel aan het verkeer",
+            "Alleen om te bellen"
+          ],
+          "juist": 1,
+          "uitleg": "Ook voor een rood licht of in de file ben je aan het rijden. Een gsm vasthouden is dan verboden. Gebruik een houder of handsfree."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Wat is de alcohollimiet voor een gewone autobestuurder?",
+          "antwoorden": [
+            "0,2 promille",
+            "0,5 promille",
+            "0,8 promille"
+          ],
+          "juist": 1,
+          "uitleg": "De limiet is 0,5 promille. Voor professionele chauffeurs geldt 0,2 promille. Het veiligst is: wie rijdt, drinkt niet."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Twee rijstroken lopen samen tot één. Wanneer voeg je in?",
+          "antwoorden": [
+            "Zo vroeg mogelijk",
+            "Pas bij de versmalling, om beurten (ritsen)",
+            "Wie het grootst is, gaat eerst"
+          ],
+          "juist": 1,
+          "uitleg": "Ritsen is verplicht: rijd door tot aan de versmalling en voeg daar om beurten in. Zo gebruikt iedereen de ruimte en loopt het vlotter."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je kind is 1,25 meter groot. Hoe vervoer je het in de auto?",
+          "antwoorden": [
+            "Met gewoon de gordel",
+            "In een aangepast kinderzitje",
+            "Op schoot"
+          ],
+          "juist": 1,
+          "uitleg": "Kinderen kleiner dan 1,35 meter moeten in een aangepast kinderzitje of zitverhoger, afgestemd op hun lengte of gewicht."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je wil een schoolstraat in tijdens de schooluren. Wat geldt er?",
+          "antwoorden": [
+            "Je mag er stapvoets door",
+            "Gemotoriseerd verkeer mag er tijdens die uren niet in, op een paar uitzonderingen na",
+            "Alleen als je een kind afzet"
+          ],
+          "juist": 1,
+          "uitleg": "Een schoolstraat is bij het begin en einde van de schooldag afgesloten voor auto's. Zet je kind een straat verder af en laat het het laatste stukje stappen."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Wat is de maximumsnelheid binnen de bebouwde kom als er geen borden staan?",
+          "antwoorden": [
+            "30 km/u",
+            "50 km/u",
+            "70 km/u"
+          ],
+          "juist": 1,
+          "uitleg": "Binnen de bebouwde kom geldt standaard 50 km/u. Veel gemeenten hebben wel zones 30, aangeduid met borden."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Hoe snel mag je rijden in een woonerf?",
+          "antwoorden": [
+            "20 km/u",
+            "30 km/u",
+            "50 km/u"
+          ],
+          "juist": 0,
+          "uitleg": "In een woonerf mag je maximaal 20 km/u rijden. Voetgangers mogen er de hele weg gebruiken en kinderen mogen er spelen."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Wat is de maximumsnelheid op de autosnelweg als er geen borden staan?",
+          "antwoorden": [
+            "100 km/u",
+            "120 km/u",
+            "130 km/u"
+          ],
+          "juist": 1,
+          "uitleg": "Op de autosnelweg geldt maximaal 120 km/u, tenzij borden een lagere snelheid aangeven."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Een voetganger staat aan een zebrapad en wil oversteken. Wat doe je?",
+          "antwoorden": [
+            "Doorrijden, hij staat nog niet op het zebrapad",
+            "Stoppen en hem laten oversteken",
+            "Claxonneren zodat hij wacht"
+          ],
+          "juist": 1,
+          "uitleg": "Bestuurders moeten voetgangers laten oversteken die op het zebrapad lopen of duidelijk willen oversteken. Nader een zebrapad dus altijd met aangepaste snelheid."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Mag je even stilstaan op een fietspad om iemand af te zetten?",
+          "antwoorden": [
+            "Ja, als je knipperlichten aanzet",
+            "Nee, stilstaan en parkeren op een fietspad is verboden",
+            "Ja, maximaal vijf minuten"
+          ],
+          "juist": 1,
+          "uitleg": "Stilstaan en parkeren op een fietspad is verboden. Fietsers moeten dan uitwijken naar de rijbaan, en dat is gevaarlijk."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Mag je parkeren vlak voor een zebrapad?",
+          "antwoorden": [
+            "Ja, als je de strepen niet raakt",
+            "Nee, niet op minder dan 5 meter ervoor",
+            "Ja, buiten de spits"
+          ],
+          "juist": 1,
+          "uitleg": "Op minder dan 5 meter vóór een zebrapad mag je niet parkeren. Zo blijven overstekende voetgangers zichtbaar voor ander verkeer."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je rijdt een lange rit. Hoe voorkom je dat vermoeidheid gevaarlijk wordt?",
+          "antwoorden": [
+            "Raam open en muziek luider",
+            "Neem ongeveer om de twee uur een pauze, en stop meteen als je moe wordt",
+            "Sneller rijden zodat je er vroeger bent"
+          ],
+          "juist": 1,
+          "uitleg": "Vermoeidheid vertraagt je reactie net als alcohol. Een raam open of luide muziek helpt maar even. Alleen een pauze of slaap helpt echt."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je hebt een kleine aanrijding zonder gewonden. Wat doe je best?",
+          "antwoorden": [
+            "Gewoon doorrijden",
+            "Samen met de andere bestuurder het aanrijdingsformulier invullen",
+            "Altijd de politie bellen, ook als iedereen akkoord is"
+          ],
+          "juist": 1,
+          "uitleg": "Bij alleen materiële schade vul je samen het Europees aanrijdingsformulier in. Bij gewonden, onenigheid of gevaar bel je de politie of 112."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je staat met pech langs een gewone weg. Op welke afstand plaats je de gevarendriehoek?",
+          "antwoorden": [
+            "Vlak achter de auto",
+            "Op minstens 30 meter",
+            "Op 300 meter"
+          ],
+          "juist": 1,
+          "uitleg": "Op een gewone weg plaats je de gevarendriehoek op minstens 30 meter, op de autosnelweg op minstens 100 meter, zodat aankomend verkeer tijdig ziet dat er een obstakel is."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Hoeveel afstand houd je tot de auto voor je?",
+          "antwoorden": [
+            "Een autolengte",
+            "Minstens twee seconden, bij regen meer",
+            "Zo dicht mogelijk, dan kan niemand invoegen"
+          ],
+          "juist": 1,
+          "uitleg": "Tel twee seconden vanaf het moment dat je voorligger een vast punt passeert. Bij regen, mist of gladheid neem je minstens het dubbele."
+        }
+      ]
+    },
+    "fiets": {
+      "naam": "Gewone fiets",
+      "uitleg": "Stadsfiets, racefiets, mountainbike",
+      "fietstype": true,
+      "tip": "Zorg dat je fietslichten het altijd doen: een set oplaadbare lampjes in je tas redt je avondrit.",
+      "vragen": [
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Welke fietsverlichting is verplicht als het donker is?",
+          "antwoorden": [
+            "Wit of geel licht vooraan en rood licht achteraan",
+            "Alleen een rood licht achteraan",
+            "Geen, reflectoren volstaan"
+          ],
+          "juist": 0,
+          "uitleg": "Bij duisternis of zicht onder 200 meter moet je een wit of geel licht vooraan en een rood licht achteraan voeren. Knipperende lampjes zijn toegestaan."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je fietst in een fietsstraat. Mag een auto je inhalen?",
+          "antwoorden": [
+            "Ja, als hij langzaam rijdt",
+            "Nee, auto's mogen fietsers niet inhalen",
+            "Ja, maar alleen buiten de spits"
+          ],
+          "juist": 1,
+          "uitleg": "In een fietsstraat zijn fietsers de baas: auto's mogen er niet sneller dan 30 km/u en mogen fietsers niet inhalen."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je ziet witte driehoekjes (haaientanden) op het wegdek voor je. Wat betekent dat?",
+          "antwoorden": [
+            "Je moet voorrang verlenen",
+            "Je hebt voorrang",
+            "Er is een fietsoversteekplaats"
+          ],
+          "juist": 0,
+          "uitleg": "Haaientanden betekenen dat je voorrang moet verlenen aan het verkeer op de weg die je nadert, net als het driehoekige bord B1."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Wat betekent een bordje met een fiets en een pijl naar rechts onder het verkeerslicht?",
+          "antwoorden": [
+            "Fietsers mogen bij rood rechtsaf, met voorrang voor de anderen",
+            "Fietsers moeten altijd rechtsaf",
+            "Er ligt rechts een fietsenstalling"
+          ],
+          "juist": 0,
+          "uitleg": "Met dat bord (B22) mag je bij rood of oranje toch rechtsaf. Je moet wel voorrang geven aan voetgangers en ander verkeer."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Mag je je smartphone in de hand houden tijdens het fietsen?",
+          "antwoorden": [
+            "Ja, om te navigeren",
+            "Nee, dat is verboden",
+            "Ja, op een fietspad"
+          ],
+          "juist": 1,
+          "uitleg": "Een gsm vasthouden tijdens het fietsen is verboden en kan een boete opleveren. Een stevige houder op je stuur mag wel."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je ziet een rond blauw bord met een witte fiets. Wat betekent het?",
+          "antwoorden": [
+            "Fietsers mogen hier niet rijden",
+            "Verplicht fietspad: je moet het fietspad volgen",
+            "Er is een fietsenstalling in de buurt"
+          ],
+          "juist": 1,
+          "uitleg": "Het bord D7 duidt een verplicht fietspad aan. Fietsers moeten dat fietspad volgen en mogen dan niet op de rijbaan rijden."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je staat aan een kruispunt naast een vrachtwagen die rechtsaf wil. Waar sta je het veiligst?",
+          "antwoorden": [
+            "Rechts naast de cabine",
+            "Vlak achter de rechterhoek van de oplegger",
+            "Ruim achter de vrachtwagen, of duidelijk ervoor"
+          ],
+          "juist": 2,
+          "uitleg": "Rechts naast een vrachtwagen zit je in de dode hoek. Blijf ruim achter de vrachtwagen of sta ver genoeg ervoor zodat de chauffeur je ziet."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Een voetganger staat aan een zebrapad en wil oversteken. Wat doe je?",
+          "antwoorden": [
+            "Doorrijden, fietsers moeten niet stoppen",
+            "Bellen zodat de voetganger wacht",
+            "Stoppen en de voetganger laten oversteken"
+          ],
+          "juist": 2,
+          "uitleg": "Ook als fietser moet je voetgangers die op een zebrapad oversteken of willen oversteken voorrang geven."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Tot welke leeftijd mogen kinderen op het voetpad fietsen?",
+          "antwoorden": [
+            "Tot 10 jaar",
+            "Tot 12 jaar",
+            "Nooit"
+          ],
+          "juist": 0,
+          "uitleg": "Kinderen jonger dan 10 jaar mogen op het voetpad fietsen, zolang ze voetgangers niet hinderen of in gevaar brengen."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Geldt de alcohollimiet van 0,5 promille ook op de fiets?",
+          "antwoorden": [
+            "Nee, die geldt alleen voor auto's",
+            "Ja, ook fietsers kunnen beboet worden",
+            "Alleen na middernacht"
+          ],
+          "juist": 1,
+          "uitleg": "De limiet van 0,5 promille geldt voor alle bestuurders, dus ook voor fietsers. Wie te veel gedronken heeft, laat de fiets beter staan."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Mag je met twee naast elkaar fietsen?",
+          "antwoorden": [
+            "Nooit",
+            "Ja, maar je gaat achter elkaar rijden als ander verkeer anders niet veilig kan kruisen of inhalen",
+            "Ja, altijd en overal"
+          ],
+          "juist": 1,
+          "uitleg": "Met twee naast elkaar fietsen mag. Laat je ander verkeer niet veilig passeren, dan ga je achter elkaar rijden. Buiten de bebouwde kom doe je dat zodra er verkeer van achteren nadert."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Vanaf hoeveel fietsers mag een groep op de rijbaan rijden, ook als er een fietspad is?",
+          "antwoorden": [
+            "Vanaf 5",
+            "Vanaf 15",
+            "Vanaf 50"
+          ],
+          "juist": 1,
+          "uitleg": "Een groep van minstens 15 fietsers mag de rijbaan gebruiken, ook als er een fietspad ligt. Vanaf 50 fietsers is begeleiding nodig."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Welke uitrusting moet altijd op je fiets zitten?",
+          "antwoorden": [
+            "Alleen een slot",
+            "Een bel, twee goede remmen en reflectoren",
+            "Een helmhouder en een spiegel"
+          ],
+          "juist": 1,
+          "uitleg": "Een fiets moet een bel hebben, twee remmen die goed werken en de verplichte reflectoren: wit vooraan, rood achteraan, oranje in de pedalen en reflectoren op de wielen."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je ziet een rond bord met een rode rand en een zwarte fiets erop. Wat betekent het?",
+          "antwoorden": [
+            "Verboden toegang voor fietsers",
+            "Verplicht fietspad",
+            "Fietsstraat"
+          ],
+          "juist": 0,
+          "uitleg": "Een rond bord met rode rand verbiedt iets. Met een fiets erop (bord C11) is de weg verboden voor fietsers."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je wil op de fiets een zebrapad oversteken. Heb je dan voorrang zoals een voetganger?",
+          "antwoorden": [
+            "Ja, het zebrapad geeft altijd voorrang",
+            "Nee, fietsend heb je die voorrang niet; stap af als je als voetganger wil oversteken",
+            "Alleen als je bel gebruikt"
+          ],
+          "juist": 1,
+          "uitleg": "De voorrang op een zebrapad geldt voor voetgangers. Wie fietsend oversteekt, heeft die voorrang niet. Stap af en wandel over als je die voorrang wil."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Is een fietshelm verplicht op een gewone fiets?",
+          "antwoorden": [
+            "Ja, voor iedereen",
+            "Nee, maar hij beschermt je hoofd bij een val en wordt sterk aangeraden",
+            "Alleen buiten de bebouwde kom"
+          ],
+          "juist": 1,
+          "uitleg": "Voor een gewone fiets en een e-bike tot 25 km/u is een helm niet verplicht. Bij een val beschermt hij wel je hoofd, en hoofdletsels zijn bij fietsers vaak de zwaarste."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Het regent. Waar let je extra op?",
+          "antwoorden": [
+            "Nergens op, banden hebben genoeg grip",
+            "Rem vroeger en wees voorzichtig op witte markeringen, putdeksels en tramsporen",
+            "Fiets sneller zodat je minder nat wordt"
+          ],
+          "juist": 1,
+          "uitleg": "Bij regen wordt je remweg langer. Witte markeringen, putdeksels en sporen worden glad. Rem vroeger en neem bochten rustig."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je rijdt een rotonde op waar geen fietspad ligt. Waar fiets je het veiligst?",
+          "antwoorden": [
+            "Zo ver mogelijk rechts tegen de rand",
+            "In het midden van je rijstrook, zodat auto's je niet inhalen op de rotonde",
+            "Op het voetpad"
+          ],
+          "juist": 1,
+          "uitleg": "Rijd je helemaal rechts, dan worden auto's verleid om je in te halen en je af te snijden bij het afslaan. In het midden van de rijstrook ben je beter zichtbaar."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Wat is een fietssuggestiestrook (een gekleurde strook op de rijbaan zonder doorlopende witte lijnen)?",
+          "antwoorden": [
+            "Een verplicht fietspad",
+            "Een deel van de rijbaan dat fietsers aanwijst, maar auto's mogen er ook op rijden",
+            "Een strook waar alleen bussen mogen rijden"
+          ],
+          "juist": 1,
+          "uitleg": "Een fietssuggestiestrook is geen fietspad. Ze toont waar fietsers rijden, maar ander verkeer mag erop komen. Je hebt er dus geen eigen ruimte."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je wordt 's avonds verblind door de koplampen van een tegenligger. Wat doe je?",
+          "antwoorden": [
+            "Gewoon doorrijden",
+            "Vertragen en naar de rechterrand van de weg kijken tot je weer goed ziet",
+            "Je ogen even sluiten"
+          ],
+          "juist": 1,
+          "uitleg": "Kijk niet recht in de lichten maar naar de rand van de weg, en vertraag tot je weer alles ziet."
+        }
+      ]
+    },
+    "ebike": {
+      "naam": "Elektrische fiets",
+      "uitleg": "Trapondersteuning tot 25 km/u",
+      "fietstype": true,
+      "tip": "Andere weggebruikers schatten je snelheid vaak te laag in. Maak oogcontact aan kruispunten.",
+      "vragen": [
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Tot welke snelheid mag de motor van een gewone elektrische fiets helpen?",
+          "antwoorden": [
+            "25 km/u",
+            "35 km/u",
+            "45 km/u"
+          ],
+          "juist": 0,
+          "uitleg": "Een elektrische fiets (pedelec) ondersteunt tot 25 km/u met een motor van maximaal 250 watt. Sneller trappen mag, maar dan zonder hulp."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Wat heb je wettelijk nodig voor een elektrische fiets tot 25 km/u?",
+          "antwoorden": [
+            "Een rijbewijs AM",
+            "Een nummerplaat en verzekering",
+            "Niets extra, dezelfde regels als een gewone fiets"
+          ],
+          "juist": 2,
+          "uitleg": "Een pedelec valt onder de regels van een gewone fiets: geen rijbewijs, nummerplaat of helmplicht. Een helm blijft wel een slim idee."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je komt aan een kruispunt zonder borden, lichten of markeringen. Wie heeft voorrang?",
+          "antwoorden": [
+            "Wie van rechts komt, ook als dat een fietser is",
+            "Auto's hebben altijd voorrang op fietsers",
+            "Wie het snelst rijdt"
+          ],
+          "juist": 0,
+          "uitleg": "Zonder borden of lichten geldt voorrang van rechts. Die regel geldt voor iedereen: fietsers, auto's en bromfietsen."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je laat je e-bike opdrijven zodat hij tot 32 km/u ondersteunt. Wat gebeurt er?",
+          "antwoorden": [
+            "Niets, zolang je het fietspad gebruikt",
+            "Hij is geen fiets meer en je rijdt dan onverzekerd en zonder correcte inschrijving",
+            "Je krijgt enkel een waarschuwing"
+          ],
+          "juist": 1,
+          "uitleg": "Een opgedreven e-bike voldoet niet meer aan de regels voor een fiets. Bij een ongeval kan je verzekering weigeren te betalen."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Hoe zorg je in de winter het best voor je batterij?",
+          "antwoorden": [
+            "Laten opladen in een koude garage",
+            "Binnen bewaren en op kamertemperatuur opladen",
+            "Volledig leeg laten lopen voor je oplaadt"
+          ],
+          "juist": 1,
+          "uitleg": "Lithiumbatterijen houden niet van vrieskou. Laad op bij kamertemperatuur en bewaar de batterij binnen, dan gaat ze langer mee."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Wat geldt er in een schoolstraat tijdens de afgesproken uren?",
+          "antwoorden": [
+            "Niets bijzonders, het is gewoon een zone 30",
+            "Gemotoriseerd verkeer mag er niet in, fietsers en voetgangers wel",
+            "Ook fietsers moeten afstappen"
+          ],
+          "juist": 1,
+          "uitleg": "Een schoolstraat wordt bij het begin en einde van de schooldag afgesloten voor gemotoriseerd verkeer. Fietsers en voetgangers mogen er wel door, rustig en met aandacht voor de kinderen."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Waarom heb je met een e-bike een langere remweg?",
+          "antwoorden": [
+            "Door het hogere gewicht en de hogere snelheid",
+            "Omdat de motor tegenwerkt",
+            "Dat klopt niet, de remweg is gelijk"
+          ],
+          "juist": 0,
+          "uitleg": "Een e-bike is zwaarder en je rijdt gemiddeld sneller. Rem dus vroeger en houd meer afstand."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Je fietst langs een rij geparkeerde auto's. Hoe rijd je het veiligst?",
+          "antwoorden": [
+            "Zo dicht mogelijk bij de auto's, dan ben je uit de weg",
+            "Met ongeveer een meter afstand, zodat een openzwaaiend portier je niet raakt",
+            "Op het voetpad"
+          ],
+          "juist": 1,
+          "uitleg": "Een portier dat plots opengaat is een veelvoorkomende oorzaak van fietsongevallen. Een meter afstand geeft je ruimte om te reageren."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je nadert een kruispunt aan 24 km/u. Waar moet je extra op letten?",
+          "antwoorden": [
+            "Op niets, je hebt toch voorrang",
+            "Automobilisten kunnen denken dat je trager rijdt en je de weg afsnijden",
+            "Dat je de ondersteuning uitzet"
+          ],
+          "juist": 1,
+          "uitleg": "Wie een fietser ziet, verwacht vaak 15 km/u. Anticipeer en rem tijdig als iemand je niet goed lijkt in te schatten."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Wat maakt je in het donker het best zichtbaar?",
+          "antwoorden": [
+            "Een donkere jas",
+            "Goede verlichting en reflecterend materiaal, bv. aan je enkels en op een fluohesje",
+            "Alleen een fietsbel"
+          ],
+          "juist": 1,
+          "uitleg": "Lichten zorgen dat je gezien wordt, reflectoren op bewegende delen zoals enkels en pedalen vallen extra op in de koplampen van auto's."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je ziet witte driehoekjes (haaientanden) op het wegdek voor je. Wat betekent dat?",
+          "antwoorden": [
+            "Je moet voorrang verlenen",
+            "Je hebt voorrang",
+            "Er is een fietsoversteekplaats"
+          ],
+          "juist": 0,
+          "uitleg": "Haaientanden betekenen dat je voorrang moet verlenen aan het verkeer op de weg die je nadert, net als het driehoekige bord B1."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je ziet een rond blauw bord met een witte fiets. Wat betekent het?",
+          "antwoorden": [
+            "Fietsers mogen hier niet rijden",
+            "Verplicht fietspad: je moet het fietspad volgen",
+            "Er is een fietsenstalling in de buurt"
+          ],
+          "juist": 1,
+          "uitleg": "Het bord D7 duidt een verplicht fietspad aan. Fietsers moeten dat fietspad volgen en mogen dan niet op de rijbaan rijden."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Geldt de alcohollimiet van 0,5 promille ook op de fiets?",
+          "antwoorden": [
+            "Nee, die geldt alleen voor auto's",
+            "Ja, ook fietsers kunnen beboet worden",
+            "Alleen na middernacht"
+          ],
+          "juist": 1,
+          "uitleg": "De limiet van 0,5 promille geldt voor alle bestuurders, dus ook voor fietsers. Wie te veel gedronken heeft, laat de fiets beter staan."
+        },
+        {
+          "actief": false,
+          "soort": "voertuig",
+          "vraag": "Wat betekent een bordje met een fiets en een pijl naar rechts onder het verkeerslicht?",
+          "antwoorden": [
+            "Fietsers mogen bij rood rechtsaf, met voorrang voor de anderen",
+            "Fietsers moeten altijd rechtsaf",
+            "Er ligt rechts een fietsenstalling"
+          ],
+          "juist": 0,
+          "uitleg": "Met dat bord (B22) mag je bij rood of oranje toch rechtsaf. Je moet wel voorrang geven aan voetgangers en ander verkeer."
+        },
+        {
+          "actief": false,
+          "soort": "voertuig",
+          "vraag": "Je fietst in een fietsstraat. Mag een auto je inhalen?",
+          "antwoorden": [
+            "Ja, als hij langzaam rijdt",
+            "Nee, auto's mogen fietsers niet inhalen",
+            "Ja, maar alleen buiten de spits"
+          ],
+          "juist": 1,
+          "uitleg": "In een fietsstraat zijn fietsers de baas: auto's mogen er niet sneller dan 30 km/u en mogen fietsers niet inhalen."
+        },
+        {
+          "actief": false,
+          "soort": "voertuig",
+          "vraag": "Mag je je smartphone in de hand houden tijdens het fietsen?",
+          "antwoorden": [
+            "Ja, om te navigeren",
+            "Nee, dat is verboden",
+            "Ja, op een fietspad"
+          ],
+          "juist": 1,
+          "uitleg": "Een gsm vasthouden tijdens het fietsen is verboden en kan een boete opleveren. Een stevige houder op je stuur mag wel."
+        },
+        {
+          "actief": false,
+          "soort": "voertuig",
+          "vraag": "Je staat aan een kruispunt naast een vrachtwagen die rechtsaf wil. Waar sta je het veiligst?",
+          "antwoorden": [
+            "Rechts naast de cabine",
+            "Vlak achter de rechterhoek van de oplegger",
+            "Ruim achter de vrachtwagen, of duidelijk ervoor"
+          ],
+          "juist": 2,
+          "uitleg": "Rechts naast een vrachtwagen zit je in de dode hoek. Blijf ruim achter de vrachtwagen of sta ver genoeg ervoor zodat de chauffeur je ziet."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Welk soort ongeval komt bij e-bikers vaak voor?",
+          "antwoorden": [
+            "Vallen zonder dat iemand anders erbij betrokken is, bv. bij op- en afstappen of in een bocht",
+            "Alleen aanrijdingen met trams",
+            "Ongevallen door een lege batterij"
+          ],
+          "juist": 0,
+          "uitleg": "Veel e-bikers vallen zonder dat iemand anders betrokken is. Het hogere gewicht en de snelheid spelen mee. Start rustig, met de ondersteuning laag, en neem bochten bedaard."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Hoe laad je je e-bikebatterij veilig op?",
+          "antwoorden": [
+            "Met elke lader die past",
+            "Met de originele lader, op een droge plek, en nooit met een beschadigde batterij",
+            "In de volle zon, dan gaat het sneller"
+          ],
+          "juist": 1,
+          "uitleg": "Een beschadigde of verkeerd geladen lithiumbatterij kan oververhitten. Gebruik de originele lader en laad op een droge plek waar je erbij kan."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Het regent. Waar let je extra op?",
+          "antwoorden": [
+            "Nergens op, banden hebben genoeg grip",
+            "Rem vroeger en wees voorzichtig op witte markeringen, putdeksels en tramsporen",
+            "Fiets sneller zodat je minder nat wordt"
+          ],
+          "juist": 1,
+          "uitleg": "Bij regen wordt je remweg langer. Witte markeringen, putdeksels en sporen worden glad. Rem vroeger en neem bochten rustig."
+        }
+      ]
+    },
+    "speed": {
+      "naam": "Speed pedelec",
+      "uitleg": "Ondersteuning tot 45 km/u",
+      "fietstype": true,
+      "tip": "Pas je snelheid aan op drukke fietspaden. Met 45 km/u passeer je andere fietsers sneller dan ze verwachten.",
+      "vragen": [
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Tot welke snelheid krijg je ondersteuning op een speed pedelec?",
+          "antwoorden": [
+            "25 km/u",
+            "45 km/u",
+            "60 km/u"
+          ],
+          "juist": 1,
+          "uitleg": "Een speed pedelec ondersteunt tot 45 km/u. Daarom valt hij in België onder de bromfietsen klasse P."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Welk rijbewijs heb je nodig voor een speed pedelec?",
+          "antwoorden": [
+            "Geen",
+            "Rijbewijs AM (zit ook in rijbewijs B)",
+            "Rijbewijs A"
+          ],
+          "juist": 1,
+          "uitleg": "Je hebt minstens rijbewijs AM nodig. Heb je een rijbewijs B, dan ben je in orde."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Geldt de alcohollimiet van 0,5 promille ook op de fiets?",
+          "antwoorden": [
+            "Nee, die geldt alleen voor auto's",
+            "Ja, ook fietsers kunnen beboet worden",
+            "Alleen na middernacht"
+          ],
+          "juist": 1,
+          "uitleg": "De limiet van 0,5 promille geldt voor alle bestuurders, dus ook voor fietsers. Wie te veel gedronken heeft, laat de fiets beter staan."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Welke helm is verplicht?",
+          "antwoorden": [
+            "Geen helm verplicht",
+            "Elke gewone fietshelm",
+            "Een speed-pedelechelm (NTA 8776) of een bromfietshelm"
+          ],
+          "juist": 2,
+          "uitleg": "Een helm is verplicht: een bromfietshelm of een speciale speed-pedelechelm volgens de norm NTA 8776, die meer van je hoofd beschermt."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Wat moet er nog in orde zijn?",
+          "antwoorden": [
+            "Een nummerplaat en een verzekering",
+            "Alleen een fietsbel",
+            "Een jaarlijkse keuring"
+          ],
+          "juist": 0,
+          "uitleg": "Een speed pedelec moet ingeschreven zijn met een nummerplaat en verzekerd zijn, net als een bromfiets."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je ziet witte driehoekjes (haaientanden) op het wegdek voor je. Wat betekent dat?",
+          "antwoorden": [
+            "Je moet voorrang verlenen",
+            "Je hebt voorrang",
+            "Er is een fietsoversteekplaats"
+          ],
+          "juist": 0,
+          "uitleg": "Haaientanden betekenen dat je voorrang moet verlenen aan het verkeer op de weg die je nadert, net als het driehoekige bord B1."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je rijdt buiten de bebouwde kom en er ligt een fietspad. Waar rijd je?",
+          "antwoorden": [
+            "Op het fietspad",
+            "Op de rijbaan, je bent een bromfiets",
+            "Je kiest zelf"
+          ],
+          "juist": 0,
+          "uitleg": "Buiten de bebouwde kom moet je het fietspad volgen als er een is. Binnen de bebouwde kom mag je kiezen tussen fietspad en rijbaan."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Hoe steek je tramsporen het veiligst over?",
+          "antwoorden": [
+            "Zo haaks mogelijk",
+            "Evenwijdig met de sporen",
+            "Met een flinke snelheid zodat je er snel over bent"
+          ],
+          "juist": 0,
+          "uitleg": "Een wiel kan vastraken in de groef van de rails. Kruis sporen daarom zo haaks mogelijk, zeker als het nat is."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je haalt een groepje schoolkinderen in op het fietspad. Wat doe je?",
+          "antwoorden": [
+            "Bellen en aan 40 km/u voorbij",
+            "Vertragen, ruim afstand houden en pas inhalen als het veilig kan",
+            "Even op het voetpad uitwijken"
+          ],
+          "juist": 1,
+          "uitleg": "Het snelheidsverschil met andere fietsers is groot. Vertraag, waarschuw tijdig en haal in met voldoende ruimte."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Je ziet een ongeval met gewonden. Welk nummer bel je?",
+          "antwoorden": [
+            "101",
+            "112",
+            "1722"
+          ],
+          "juist": 1,
+          "uitleg": "Bel 112 voor de ambulance en brandweer. Zorg eerst dat je zelf veilig staat en help daarna waar je kan."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je komt aan een kruispunt zonder borden, lichten of markeringen. Wie heeft voorrang?",
+          "antwoorden": [
+            "Wie van rechts komt, ook als dat een fietser is",
+            "Auto's hebben altijd voorrang op fietsers",
+            "Wie het snelst rijdt"
+          ],
+          "juist": 0,
+          "uitleg": "Zonder borden of lichten geldt voorrang van rechts. Die regel geldt voor iedereen: fietsers, auto's en bromfietsen."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je fietst langs een rij geparkeerde auto's. Hoe rijd je het veiligst?",
+          "antwoorden": [
+            "Zo dicht mogelijk bij de auto's, dan ben je uit de weg",
+            "Met ongeveer een meter afstand, zodat een openzwaaiend portier je niet raakt",
+            "Op het voetpad"
+          ],
+          "juist": 1,
+          "uitleg": "Een portier dat plots opengaat is een veelvoorkomende oorzaak van fietsongevallen. Een meter afstand geeft je ruimte om te reageren."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Wat maakt je in het donker het best zichtbaar?",
+          "antwoorden": [
+            "Een donkere jas",
+            "Goede verlichting en reflecterend materiaal, bv. aan je enkels en op een fluohesje",
+            "Alleen een fietsbel"
+          ],
+          "juist": 1,
+          "uitleg": "Lichten zorgen dat je gezien wordt, reflectoren op bewegende delen zoals enkels en pedalen vallen extra op in de koplampen van auto's."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je wil links afslaan. Hoe laat je dat weten?",
+          "antwoorden": [
+            "Door tijdig je linkerarm uit te steken",
+            "Door te bellen",
+            "Dat hoeft niet op een fiets"
+          ],
+          "juist": 0,
+          "uitleg": "Steek tijdig je arm uit in de richting waarin je afslaat, kijk achterom en sorteer pas dan voor. Zo weten anderen wat je van plan bent."
+        },
+        {
+          "actief": false,
+          "soort": "voertuig",
+          "vraag": "Je staat aan een kruispunt naast een vrachtwagen die rechtsaf wil. Waar sta je het veiligst?",
+          "antwoorden": [
+            "Rechts naast de cabine",
+            "Vlak achter de rechterhoek van de oplegger",
+            "Ruim achter de vrachtwagen, of duidelijk ervoor"
+          ],
+          "juist": 2,
+          "uitleg": "Rechts naast een vrachtwagen zit je in de dode hoek. Blijf ruim achter de vrachtwagen of sta ver genoeg ervoor zodat de chauffeur je ziet."
+        },
+        {
+          "actief": false,
+          "soort": "voertuig",
+          "vraag": "Mag je je smartphone in de hand houden tijdens het fietsen?",
+          "antwoorden": [
+            "Ja, om te navigeren",
+            "Nee, dat is verboden",
+            "Ja, op een fietspad"
+          ],
+          "juist": 1,
+          "uitleg": "Een gsm vasthouden tijdens het fietsen is verboden en kan een boete opleveren. Een stevige houder op je stuur mag wel."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Het regent. Waar let je extra op?",
+          "antwoorden": [
+            "Nergens op, banden hebben genoeg grip",
+            "Rem vroeger en wees voorzichtig op witte markeringen, putdeksels en tramsporen",
+            "Fiets sneller zodat je minder nat wordt"
+          ],
+          "juist": 1,
+          "uitleg": "Bij regen wordt je remweg langer. Witte markeringen, putdeksels en sporen worden glad. Rem vroeger en neem bochten rustig."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je rijdt 45 km/u in plaats van 25 km/u. Wat gebeurt er met je remweg?",
+          "antwoorden": [
+            "Hij blijft ongeveer gelijk",
+            "Hij wordt ongeveer dubbel zo lang",
+            "Hij wordt ruim drie keer zo lang"
+          ],
+          "juist": 2,
+          "uitleg": "De remweg groeit met het kwadraat van de snelheid. Bijna dubbel zo snel betekent ruim drie keer zo ver remmen. Houd dus veel meer afstand."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je rijdt een rotonde op waar geen fietspad ligt. Waar fiets je het veiligst?",
+          "antwoorden": [
+            "Zo ver mogelijk rechts tegen de rand",
+            "In het midden van je rijstrook, zodat auto's je niet inhalen op de rotonde",
+            "Op het voetpad"
+          ],
+          "juist": 1,
+          "uitleg": "Rijd je helemaal rechts, dan worden auto's verleid om je in te halen en je af te snijden bij het afslaan. In het midden van de rijstrook ben je beter zichtbaar."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je wil muziek luisteren onderweg. Wat is het risico van twee oortjes met noise cancelling?",
+          "antwoorden": [
+            "Geen enkel risico",
+            "Je hoort naderend verkeer, sirenes of een bel veel minder goed",
+            "Je batterij loopt sneller leeg"
+          ],
+          "juist": 1,
+          "uitleg": "Geluid helpt je om verkeer aan te voelen voor je het ziet. Hou het volume laag of laat één oor vrij."
+        }
+      ]
+    },
+    "bakfiets": {
+      "naam": "Bakfiets",
+      "uitleg": "Met kinderen, boodschappen of lading",
+      "fietstype": true,
+      "tip": "Rem en draai rustig met een volle bak: je bakfiets reageert trager dan je gewone fiets.",
+      "vragen": [
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je bakfiets is breder dan 1 meter. Moet je het fietspad gebruiken?",
+          "antwoorden": [
+            "Ja, altijd",
+            "Nee, je mag ook de rijbaan gebruiken",
+            "Alleen als er geen auto's zijn"
+          ],
+          "juist": 1,
+          "uitleg": "Fietsen met meer dan twee wielen, met een aanhangwagen of breder dan 1 meter mogen ook op de rijbaan rijden, ook als er een fietspad is."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Waarom neem je met een driewielbakfiets een bocht traag?",
+          "antwoorden": [
+            "Omdat hij anders kan kantelen",
+            "Om de banden te sparen",
+            "Dat hoeft niet, drie wielen zijn altijd stabiel"
+          ],
+          "juist": 0,
+          "uitleg": "Een driewieler leunt niet mee in de bocht. Te snel draaien kan hem doen kantelen. Vertraag voor de bocht, niet erin."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je komt aan een kruispunt zonder borden, lichten of markeringen. Wie heeft voorrang?",
+          "antwoorden": [
+            "Wie van rechts komt, ook als dat een fietser is",
+            "Auto's hebben altijd voorrang op fietsers",
+            "Wie het snelst rijdt"
+          ],
+          "juist": 0,
+          "uitleg": "Zonder borden of lichten geldt voorrang van rechts. Die regel geldt voor iedereen: fietsers, auto's en bromfietsen."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je vervoert kinderen in de bak. Wat is het belangrijkst?",
+          "antwoorden": [
+            "Een regenhoes",
+            "Dat ze vastzitten met de gordels",
+            "Dat ze naar achteren kijken"
+          ],
+          "juist": 1,
+          "uitleg": "Gebruik altijd de gordels in de bak. Een helm voor de kinderen wordt sterk aangeraden."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Hoe verandert je remweg met een volle bak?",
+          "antwoorden": [
+            "Hij wordt korter",
+            "Hij blijft gelijk",
+            "Hij wordt langer"
+          ],
+          "juist": 2,
+          "uitleg": "Hoe zwaarder de lading, hoe langer je nodig hebt om te stoppen. Houd meer afstand en rem vroeger."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Aan een verkeerslicht is er een gekleurd vak voor de stopstreep van de auto's, met een fiets erop. Wat is dat?",
+          "antwoorden": [
+            "Een parkeerplaats voor fietsen",
+            "Een opstelvak waar fietsers voor de auto's mogen wachten",
+            "Een zone waar fietsers moeten afstappen"
+          ],
+          "juist": 1,
+          "uitleg": "In dat opstelvak wachten fietsers vóór de auto's. Zo zien chauffeurs je beter als het licht groen wordt."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Waar moet je bij afslaan extra op letten?",
+          "antwoorden": [
+            "Je bak steekt ver voor je uit en je draaicirkel is groter",
+            "Nergens op, een bakfiets draait scherper",
+            "Dat je je arm niet uitsteekt"
+          ],
+          "juist": 0,
+          "uitleg": "De bak zit al op het kruispunt voor jij er bent. Kijk vooruit, steek je arm uit en neem een ruime bocht."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Je wil muziek luisteren onderweg. Wat is het risico van twee oortjes met noise cancelling?",
+          "antwoorden": [
+            "Geen enkel risico",
+            "Je hoort naderend verkeer, sirenes of een bel veel minder goed",
+            "Je batterij loopt sneller leeg"
+          ],
+          "juist": 1,
+          "uitleg": "Geluid helpt je om verkeer aan te voelen voor je het ziet. Hou het volume laag of laat één oor vrij."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Waar parkeer je je bakfiets het best?",
+          "antwoorden": [
+            "Midden op het voetpad, dat mag",
+            "Zo dat voetgangers, rolstoelen en kinderwagens vlot door kunnen",
+            "In de fietsstraat"
+          ],
+          "juist": 1,
+          "uitleg": "Je mag een fiets op het voetpad zetten als je voetgangers niet hindert. Met een bakfiets is dat snel het geval, dus kies je plek met zorg."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Een voetganger staat aan een zebrapad en wil oversteken. Wat doe je?",
+          "antwoorden": [
+            "Doorrijden, fietsers moeten niet stoppen",
+            "Bellen zodat de voetganger wacht",
+            "Stoppen en de voetganger laten oversteken"
+          ],
+          "juist": 2,
+          "uitleg": "Ook als fietser moet je voetgangers die op een zebrapad oversteken of willen oversteken voorrang geven."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je ziet witte driehoekjes (haaientanden) op het wegdek voor je. Wat betekent dat?",
+          "antwoorden": [
+            "Je moet voorrang verlenen",
+            "Je hebt voorrang",
+            "Er is een fietsoversteekplaats"
+          ],
+          "juist": 0,
+          "uitleg": "Haaientanden betekenen dat je voorrang moet verlenen aan het verkeer op de weg die je nadert, net als het driehoekige bord B1."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Geldt de alcohollimiet van 0,5 promille ook op de fiets?",
+          "antwoorden": [
+            "Nee, die geldt alleen voor auto's",
+            "Ja, ook fietsers kunnen beboet worden",
+            "Alleen na middernacht"
+          ],
+          "juist": 1,
+          "uitleg": "De limiet van 0,5 promille geldt voor alle bestuurders, dus ook voor fietsers. Wie te veel gedronken heeft, laat de fiets beter staan."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Wat geldt er in een schoolstraat tijdens de afgesproken uren?",
+          "antwoorden": [
+            "Niets bijzonders, het is gewoon een zone 30",
+            "Gemotoriseerd verkeer mag er niet in, fietsers en voetgangers wel",
+            "Ook fietsers moeten afstappen"
+          ],
+          "juist": 1,
+          "uitleg": "Een schoolstraat wordt bij het begin en einde van de schooldag afgesloten voor gemotoriseerd verkeer. Fietsers en voetgangers mogen er wel door, rustig en met aandacht voor de kinderen."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je fietst langs een rij geparkeerde auto's. Hoe rijd je het veiligst?",
+          "antwoorden": [
+            "Zo dicht mogelijk bij de auto's, dan ben je uit de weg",
+            "Met ongeveer een meter afstand, zodat een openzwaaiend portier je niet raakt",
+            "Op het voetpad"
+          ],
+          "juist": 1,
+          "uitleg": "Een portier dat plots opengaat is een veelvoorkomende oorzaak van fietsongevallen. Een meter afstand geeft je ruimte om te reageren."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Wat maakt je in het donker het best zichtbaar?",
+          "antwoorden": [
+            "Een donkere jas",
+            "Goede verlichting en reflecterend materiaal, bv. aan je enkels en op een fluohesje",
+            "Alleen een fietsbel"
+          ],
+          "juist": 1,
+          "uitleg": "Lichten zorgen dat je gezien wordt, reflectoren op bewegende delen zoals enkels en pedalen vallen extra op in de koplampen van auto's."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Hoe steek je tramsporen het veiligst over?",
+          "antwoorden": [
+            "Zo haaks mogelijk",
+            "Evenwijdig met de sporen",
+            "Met een flinke snelheid zodat je er snel over bent"
+          ],
+          "juist": 0,
+          "uitleg": "Een wiel kan vastraken in de groef van de rails. Kruis sporen daarom zo haaks mogelijk, zeker als het nat is."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je ziet een ongeval met gewonden. Welk nummer bel je?",
+          "antwoorden": [
+            "101",
+            "112",
+            "1722"
+          ],
+          "juist": 1,
+          "uitleg": "Bel 112 voor de ambulance en brandweer. Zorg eerst dat je zelf veilig staat en help daarna waar je kan."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je wil links afslaan. Hoe laat je dat weten?",
+          "antwoorden": [
+            "Door tijdig je linkerarm uit te steken",
+            "Door te bellen",
+            "Dat hoeft niet op een fiets"
+          ],
+          "juist": 0,
+          "uitleg": "Steek tijdig je arm uit in de richting waarin je afslaat, kijk achterom en sorteer pas dan voor. Zo weten anderen wat je van plan bent."
+        },
+        {
+          "actief": false,
+          "soort": "voertuig",
+          "vraag": "Je staat aan een kruispunt naast een vrachtwagen die rechtsaf wil. Waar sta je het veiligst?",
+          "antwoorden": [
+            "Rechts naast de cabine",
+            "Vlak achter de rechterhoek van de oplegger",
+            "Ruim achter de vrachtwagen, of duidelijk ervoor"
+          ],
+          "juist": 2,
+          "uitleg": "Rechts naast een vrachtwagen zit je in de dode hoek. Blijf ruim achter de vrachtwagen of sta ver genoeg ervoor zodat de chauffeur je ziet."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Het regent. Waar let je extra op?",
+          "antwoorden": [
+            "Nergens op, banden hebben genoeg grip",
+            "Rem vroeger en wees voorzichtig op witte markeringen, putdeksels en tramsporen",
+            "Fiets sneller zodat je minder nat wordt"
+          ],
+          "juist": 1,
+          "uitleg": "Bij regen wordt je remweg langer. Witte markeringen, putdeksels en sporen worden glad. Rem vroeger en neem bochten rustig."
+        }
+      ]
+    },
+    "longtail": {
+      "naam": "Longtail",
+      "uitleg": "Verlengde bagagedrager voor kids of lading",
+      "fietstype": true,
+      "tip": "Laad zwaar en laag, en controleer het maximale gewicht dat de fabrikant toelaat.",
+      "vragen": [
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je neemt een kind van 6 jaar mee achterop. Wat is verplicht?",
+          "antwoorden": [
+            "Niets, als het zich goed vasthoudt",
+            "Een aangepast zitje met voetsteunen",
+            "Alleen een helm"
+          ],
+          "juist": 1,
+          "uitleg": "Kinderen jonger dan 9 jaar moeten op een aangepast zitje zitten, met bescherming zodat hun voeten niet in de spaken raken."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Waarvoor dienen wielafschermingen op een longtail?",
+          "antwoorden": [
+            "Voor de looks",
+            "Om te voorkomen dat voeten of kleding in het achterwiel raken",
+            "Om sneller te rijden"
+          ],
+          "juist": 1,
+          "uitleg": "Wielafschermingen en voetsteunen houden voetjes, sjaals en tassen uit de spaken."
+        },
+        {
+          "actief": true,
+          "soort": "wegcode",
+          "vraag": "Je wil links afslaan. Hoe laat je dat weten?",
+          "antwoorden": [
+            "Door tijdig je linkerarm uit te steken",
+            "Door te bellen",
+            "Dat hoeft niet op een fiets"
+          ],
+          "juist": 0,
+          "uitleg": "Steek tijdig je arm uit in de richting waarin je afslaat, kijk achterom en sorteer pas dan voor. Zo weten anderen wat je van plan bent."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Hoe laad je zware boodschappen?",
+          "antwoorden": [
+            "Zo hoog mogelijk, dan zie je ze",
+            "Laag en zo centraal mogelijk",
+            "Helemaal achteraan"
+          ],
+          "juist": 1,
+          "uitleg": "Een laag zwaartepunt houdt je fiets stabiel. Zware spullen gaan laag in de tassen, verdeeld over beide kanten."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Waarom is een brede dubbele standaard handig?",
+          "antwoorden": [
+            "De fiets blijft stabiel staan terwijl kinderen op- en afstappen",
+            "Hij maakt de fiets lichter",
+            "Hij is verplicht"
+          ],
+          "juist": 0,
+          "uitleg": "Met een brede standaard valt de fiets niet om als een kind op het zitje klimt of als je laadt."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Hoe steek je tramsporen het veiligst over?",
+          "antwoorden": [
+            "Zo haaks mogelijk",
+            "Evenwijdig met de sporen",
+            "Met een flinke snelheid zodat je er snel over bent"
+          ],
+          "juist": 0,
+          "uitleg": "Een wiel kan vastraken in de groef van de rails. Kruis sporen daarom zo haaks mogelijk, zeker als het nat is."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Je longtail is een stuk langer dan een gewone fiets. Wat betekent dat in het verkeer?",
+          "antwoorden": [
+            "Niets",
+            "Je achterkant heeft meer ruimte nodig bij inhalen en afslaan",
+            "Je mag niet op het fietspad"
+          ],
+          "juist": 1,
+          "uitleg": "Houd rekening met je lengte: wacht bij invoegen tot je volledige fiets ruimte heeft en kijk achterom voor je terug naar rechts gaat."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Wat maakt je in het donker het best zichtbaar?",
+          "antwoorden": [
+            "Een donkere jas",
+            "Goede verlichting en reflecterend materiaal, bv. aan je enkels en op een fluohesje",
+            "Alleen een fietsbel"
+          ],
+          "juist": 1,
+          "uitleg": "Lichten zorgen dat je gezien wordt, reflectoren op bewegende delen zoals enkels en pedalen vallen extra op in de koplampen van auto's."
+        },
+        {
+          "actief": true,
+          "soort": "voertuig",
+          "vraag": "Mag je samen met je passagier zoveel laden als je wil?",
+          "antwoorden": [
+            "Ja, een longtail kan alles aan",
+            "Nee, houd je aan het maximale totaalgewicht van de fabrikant",
+            "Ja, zolang je stapvoets rijdt"
+          ],
+          "juist": 1,
+          "uitleg": "Elke longtail heeft een maximaal totaalgewicht voor fietser, passagiers en lading. Daarboven worden remmen en frame overbelast."
+        },
+        {
+          "actief": true,
+          "soort": "veiligheid",
+          "vraag": "Je ziet een ongeval met gewonden. Welk nummer bel je?",
+          "antwoorden": [
+            "101",
+            "112",
+            "1722"
+          ],
+          "juist": 1,
+          "uitleg": "Bel 112 voor de ambulance en brandweer. Zorg eerst dat je zelf veilig staat en help daarna waar je kan."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je komt aan een kruispunt zonder borden, lichten of markeringen. Wie heeft voorrang?",
+          "antwoorden": [
+            "Wie van rechts komt, ook als dat een fietser is",
+            "Auto's hebben altijd voorrang op fietsers",
+            "Wie het snelst rijdt"
+          ],
+          "juist": 0,
+          "uitleg": "Zonder borden of lichten geldt voorrang van rechts. Die regel geldt voor iedereen: fietsers, auto's en bromfietsen."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Aan een verkeerslicht is er een gekleurd vak voor de stopstreep van de auto's, met een fiets erop. Wat is dat?",
+          "antwoorden": [
+            "Een parkeerplaats voor fietsen",
+            "Een opstelvak waar fietsers voor de auto's mogen wachten",
+            "Een zone waar fietsers moeten afstappen"
+          ],
+          "juist": 1,
+          "uitleg": "In dat opstelvak wachten fietsers vóór de auto's. Zo zien chauffeurs je beter als het licht groen wordt."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je wil muziek luisteren onderweg. Wat is het risico van twee oortjes met noise cancelling?",
+          "antwoorden": [
+            "Geen enkel risico",
+            "Je hoort naderend verkeer, sirenes of een bel veel minder goed",
+            "Je batterij loopt sneller leeg"
+          ],
+          "juist": 1,
+          "uitleg": "Geluid helpt je om verkeer aan te voelen voor je het ziet. Hou het volume laag of laat één oor vrij."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Een voetganger staat aan een zebrapad en wil oversteken. Wat doe je?",
+          "antwoorden": [
+            "Doorrijden, fietsers moeten niet stoppen",
+            "Bellen zodat de voetganger wacht",
+            "Stoppen en de voetganger laten oversteken"
+          ],
+          "juist": 2,
+          "uitleg": "Ook als fietser moet je voetgangers die op een zebrapad oversteken of willen oversteken voorrang geven."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Wat geldt er in een schoolstraat tijdens de afgesproken uren?",
+          "antwoorden": [
+            "Niets bijzonders, het is gewoon een zone 30",
+            "Gemotoriseerd verkeer mag er niet in, fietsers en voetgangers wel",
+            "Ook fietsers moeten afstappen"
+          ],
+          "juist": 1,
+          "uitleg": "Een schoolstraat wordt bij het begin en einde van de schooldag afgesloten voor gemotoriseerd verkeer. Fietsers en voetgangers mogen er wel door, rustig en met aandacht voor de kinderen."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Je fietst langs een rij geparkeerde auto's. Hoe rijd je het veiligst?",
+          "antwoorden": [
+            "Zo dicht mogelijk bij de auto's, dan ben je uit de weg",
+            "Met ongeveer een meter afstand, zodat een openzwaaiend portier je niet raakt",
+            "Op het voetpad"
+          ],
+          "juist": 1,
+          "uitleg": "Een portier dat plots opengaat is een veelvoorkomende oorzaak van fietsongevallen. Een meter afstand geeft je ruimte om te reageren."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Je ziet witte driehoekjes (haaientanden) op het wegdek voor je. Wat betekent dat?",
+          "antwoorden": [
+            "Je moet voorrang verlenen",
+            "Je hebt voorrang",
+            "Er is een fietsoversteekplaats"
+          ],
+          "juist": 0,
+          "uitleg": "Haaientanden betekenen dat je voorrang moet verlenen aan het verkeer op de weg die je nadert, net als het driehoekige bord B1."
+        },
+        {
+          "actief": false,
+          "soort": "wegcode",
+          "vraag": "Geldt de alcohollimiet van 0,5 promille ook op de fiets?",
+          "antwoorden": [
+            "Nee, die geldt alleen voor auto's",
+            "Ja, ook fietsers kunnen beboet worden",
+            "Alleen na middernacht"
+          ],
+          "juist": 1,
+          "uitleg": "De limiet van 0,5 promille geldt voor alle bestuurders, dus ook voor fietsers. Wie te veel gedronken heeft, laat de fiets beter staan."
+        },
+        {
+          "actief": false,
+          "soort": "voertuig",
+          "vraag": "Je staat aan een kruispunt naast een vrachtwagen die rechtsaf wil. Waar sta je het veiligst?",
+          "antwoorden": [
+            "Rechts naast de cabine",
+            "Vlak achter de rechterhoek van de oplegger",
+            "Ruim achter de vrachtwagen, of duidelijk ervoor"
+          ],
+          "juist": 2,
+          "uitleg": "Rechts naast een vrachtwagen zit je in de dode hoek. Blijf ruim achter de vrachtwagen of sta ver genoeg ervoor zodat de chauffeur je ziet."
+        },
+        {
+          "actief": false,
+          "soort": "veiligheid",
+          "vraag": "Het regent. Waar let je extra op?",
+          "antwoorden": [
+            "Nergens op, banden hebben genoeg grip",
+            "Rem vroeger en wees voorzichtig op witte markeringen, putdeksels en tramsporen",
+            "Fiets sneller zodat je minder nat wordt"
+          ],
+          "juist": 1,
+          "uitleg": "Bij regen wordt je remweg langer. Witte markeringen, putdeksels en sporen worden glad. Rem vroeger en neem bochten rustig."
+        }
+      ]
+    }
+  }
+}

@@ -209,190 +209,34 @@ const ICONS = {
 };
 const ARROW = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
 
-const VEHICLES = {
-  voet: {
-    name: "Te voet", sub: "Wandelen, of te voet naar bus, tram of trein", mode: true,
-    tip: "Kijk links, rechts en nog eens links, en maak oogcontact met chauffeurs voor je oversteekt.",
-    q: [
-      { t: "wegcode", q: "Je staat aan een zebrapad zonder verkeerslichten en wil oversteken. Wie heeft voorrang?", a: ["De auto's, tot ze stoppen", "Jij: bestuurders moeten je laten oversteken", "Wie het eerst aan het zebrapad is"], c: 1,
-        x: "Bestuurders moeten voetgangers laten oversteken die op het zebrapad lopen of duidelijk willen oversteken. Maak toch oogcontact voor je vertrekt." },
-      { t: "wegcode", q: "Er ligt een zebrapad op 15 meter van jou. Waar steek je over?", a: ["Op het zebrapad", "Waar het je uitkomt", "Tussen de geparkeerde auto's"], c: 0,
-        x: "Ligt er een zebrapad op minder dan 20 meter, dan moet je dat gebruiken." },
-      { t: "wegcode", q: "Er is geen voetpad en geen berm. Aan welke kant van de weg loop je?", a: ["Rechts, met het verkeer mee", "Links, zodat je het verkeer ziet aankomen", "In het midden van de weg"], c: 1,
-        x: "Moet je op de rijbaan lopen, dan loop je links, tegen het verkeer in, tenzij dat minder veilig is. Zo zie je wat er op je af komt." },
-      { t: "veiligheid", q: "Je wil oversteken en je bent een bericht aan het lezen. Wat doe je?", a: ["Verder lezen, je hoort de auto's wel", "Gsm wegsteken, kijken en dan pas oversteken", "Sneller stappen"], c: 1,
-        x: "Wie op zijn scherm kijkt, ziet en hoort verkeer veel minder goed. Kijk links, rechts en nog eens links voor je oversteekt." },
-      { t: "wegcode", q: "Je loopt in een woonerf. Wat geldt daar?", a: ["Voetgangers mogen de hele breedte van de weg gebruiken", "Voetgangers moeten op de stoep blijven", "Auto's hebben er voorrang"], c: 0,
-        x: "In een woonerf mogen voetgangers de hele breedte van de weg gebruiken en mogen kinderen er spelen. Bestuurders rijden er maximaal 20 km/u." },
-      { t: "veiligheid", q: "Je wandelt in het donker naar huis. Hoe zorg je dat je gezien wordt?", a: ["Donkere kleren zijn prima onder de straatlantaarns", "Draag lichte kleren en iets reflecterends, zoals een fluohesje of reflectoren", "Hard lopen"], c: 1,
-        x: "Een chauffeur ziet een voetganger in donkere kleren pas heel laat. Reflecterend materiaal valt al van ver op in de koplampen." },
-      { t: "wegcode", q: "Er is geen voetpad en geen berm, wel een fietspad. Mag je daarop lopen?", a: ["Nee, nooit", "Ja, maar je moet fietsers voorrang geven", "Ja, en fietsers moeten voor jou uitwijken"], c: 1,
-        x: "Zonder voetpad of berm mag je het fietspad gebruiken, maar fietsers hebben er voorrang. Loop zo dicht mogelijk aan de rand." },
-      { t: "veiligheid", q: "Een vrachtwagen of bus wil afslaan bij het zebrapad. Wat doe je?", a: ["Meteen oversteken, je hebt voorrang", "Wachten tot je zeker bent dat de chauffeur je gezien heeft", "Vlak naast de cabine gaan staan"], c: 1,
-        x: "Vlak voor of naast een vrachtwagen of bus sta je in de dode hoek. Voorrang hebben helpt niet als de chauffeur je niet ziet." },
-      { t: "wegcode", q: "De rode lichten aan een overweg knipperen, maar de slagbomen zijn nog open. Wat doe je?", a: ["Snel nog oversteken", "Wachten: bij knipperende rode lichten mag je niet oversteken", "Oversteken als je geen trein ziet"], c: 1,
-        x: "Zodra de rode lichten knipperen of de bel rinkelt, mag je de overweg niet meer op. Een trein kan niet uitwijken of snel stoppen." },
-      { t: "veiligheid", q: "Het voetgangerslicht springt op rood als je halverwege bent. Wat doe je?", a: ["Rustig verder naar de overkant", "Terugkeren naar waar je vandaan kwam", "Blijven staan op de streep in het midden"], c: 0,
-        x: "Als je al aan het oversteken bent, loop je rustig door naar de overkant. Begin niet meer aan een oversteek als het licht al rood is." }
-    ]
-  },
-  auto: {
-    name: "Met de auto", sub: "Als bestuurder, alleen of samen", mode: true,
-    tip: "Verwacht fietsers en voetgangers bij elke afslag. Een blik over je schouder kost niets.",
-    q: [
-      { t: "wegcode", q: "Wat is in Vlaanderen de maximumsnelheid buiten de bebouwde kom als er geen borden staan?", a: ["50 km/u", "70 km/u", "90 km/u"], c: 1,
-        x: "Sinds 2017 geldt in Vlaanderen buiten de bebouwde kom standaard 70 km/u, tenzij borden iets anders aangeven." },
-      { t: "wegcode", q: "Je rijdt in een fietsstraat achter een fietser. Wat mag je doen?", a: ["Inhalen als er plaats is", "Achter de fietser blijven: inhalen mag niet en je rijdt max 30 km/u", "Toeteren zodat de fietser opzij gaat"], c: 1,
-        x: "In een fietsstraat zijn fietsers de baas. Auto's mogen er niet sneller dan 30 km/u en mogen fietsers niet inhalen." },
-      { t: "wegcode", q: "Je slaat rechtsaf en op het fietspad rechts van je rijdt een fietser rechtdoor. Wie heeft voorrang?", a: ["Jij, want je zat er eerst", "De fietser die rechtdoor rijdt", "Wie het snelst is"], c: 1,
-        x: "Wie afslaat, moet voorrang geven aan fietsers en voetgangers die rechtdoor gaan. Kijk in je spiegel en over je schouder." },
-      { t: "veiligheid", q: "Hoeveel zijdelingse afstand houd je minstens als je een fietser inhaalt?", a: ["30 centimeter", "Minstens 1 meter", "Afstand maakt niet uit als je traag rijdt"], c: 1,
-        x: "Houd minstens een meter afstand, buiten de bebouwde kom liefst nog meer. Een fietser kan uitwijken voor een put of windstoot." },
-      { t: "veiligheid", q: "Hoe open je het portier best als je geparkeerd staat?", a: ["Snel, dan sta je minder lang in de weg", "Met je hand die het verst van de deur zit, zodat je vanzelf achterom kijkt", "Pas als iemand toetert"], c: 1,
-        x: "Met die 'Dutch reach' draai je je lichaam en zie je fietsers die van achter komen. Zo voorkom je een portierongeval." },
-      { t: "wegcode", q: "Je staat stil voor een rood licht. Mag je je gsm vasthouden?", a: ["Ja, je rijdt niet", "Nee, ook stilstaand voor een rood licht neem je deel aan het verkeer", "Alleen om te bellen"], c: 1,
-        x: "Ook voor een rood licht of in de file ben je aan het rijden. Een gsm vasthouden is dan verboden. Gebruik een houder of handsfree." },
-      { t: "wegcode", q: "Wat is de alcohollimiet voor een gewone autobestuurder?", a: ["0,2 promille", "0,5 promille", "0,8 promille"], c: 1,
-        x: "De limiet is 0,5 promille. Voor professionele chauffeurs geldt 0,2 promille. Het veiligst is: wie rijdt, drinkt niet." },
-      { t: "wegcode", q: "Twee rijstroken lopen samen tot één. Wanneer voeg je in?", a: ["Zo vroeg mogelijk", "Pas bij de versmalling, om beurten (ritsen)", "Wie het grootst is, gaat eerst"], c: 1,
-        x: "Ritsen is verplicht: rijd door tot aan de versmalling en voeg daar om beurten in. Zo gebruikt iedereen de ruimte en loopt het vlotter." },
-      { t: "wegcode", q: "Je kind is 1,25 meter groot. Hoe vervoer je het in de auto?", a: ["Met gewoon de gordel", "In een aangepast kinderzitje", "Op schoot"], c: 1,
-        x: "Kinderen kleiner dan 1,35 meter moeten in een aangepast kinderzitje of zitverhoger, afgestemd op hun lengte of gewicht." },
-      { t: "wegcode", q: "Je wil een schoolstraat in tijdens de schooluren. Wat geldt er?", a: ["Je mag er stapvoets door", "Gemotoriseerd verkeer mag er tijdens die uren niet in, op een paar uitzonderingen na", "Alleen als je een kind afzet"], c: 1,
-        x: "Een schoolstraat is bij het begin en einde van de schooldag afgesloten voor auto's. Zet je kind een straat verder af en laat het het laatste stukje stappen." }
-    ]
-  },
-  fiets: {
-    name: "Gewone fiets", sub: "Stadsfiets, racefiets, mountainbike",
-    tip: "Zorg dat je fietslichten het altijd doen: een set oplaadbare lampjes in je tas redt je avondrit.",
-    q: [
-      { q: "Welke fietsverlichting is verplicht als het donker is?", a: ["Wit of geel licht vooraan en rood licht achteraan", "Alleen een rood licht achteraan", "Geen, reflectoren volstaan"], c: 0,
-        x: "Bij duisternis of zicht onder 200 meter moet je een wit of geel licht vooraan en een rood licht achteraan voeren. Knipperende lampjes zijn toegestaan." },
-      { q: "Je fietst in een fietsstraat. Mag een auto je inhalen?", a: ["Ja, als hij langzaam rijdt", "Nee, auto's mogen fietsers niet inhalen", "Ja, maar alleen buiten de spits"], c: 1,
-        x: "In een fietsstraat zijn fietsers de baas: auto's mogen er niet sneller dan 30 km/u en mogen fietsers niet inhalen." },
-      { t: "wegcode", q: "Je ziet witte driehoekjes (haaientanden) op het wegdek voor je. Wat betekent dat?", a: ["Je moet voorrang verlenen", "Je hebt voorrang", "Er is een fietsoversteekplaats"], c: 0,
-        x: "Haaientanden betekenen dat je voorrang moet verlenen aan het verkeer op de weg die je nadert, net als het driehoekige bord B1." },
-      { q: "Wat betekent een bordje met een fiets en een pijl naar rechts onder het verkeerslicht?", a: ["Fietsers mogen bij rood rechtsaf, met voorrang voor de anderen", "Fietsers moeten altijd rechtsaf", "Er ligt rechts een fietsenstalling"], c: 0,
-        x: "Met dat bord (B22) mag je bij rood of oranje toch rechtsaf. Je moet wel voorrang geven aan voetgangers en ander verkeer." },
-      { q: "Mag je je smartphone in de hand houden tijdens het fietsen?", a: ["Ja, om te navigeren", "Nee, dat is verboden", "Ja, op een fietspad"], c: 1,
-        x: "Een gsm vasthouden tijdens het fietsen is verboden en kan een boete opleveren. Een stevige houder op je stuur mag wel." },
-      { t: "wegcode", q: "Je ziet een rond blauw bord met een witte fiets. Wat betekent het?", a: ["Fietsers mogen hier niet rijden", "Verplicht fietspad: je moet het fietspad volgen", "Er is een fietsenstalling in de buurt"], c: 1,
-        x: "Het bord D7 duidt een verplicht fietspad aan. Fietsers moeten dat fietspad volgen en mogen dan niet op de rijbaan rijden." },
-      { q: "Je staat aan een kruispunt naast een vrachtwagen die rechtsaf wil. Waar sta je het veiligst?", a: ["Rechts naast de cabine", "Vlak achter de rechterhoek van de oplegger", "Ruim achter de vrachtwagen, of duidelijk ervoor"], c: 2,
-        x: "Rechts naast een vrachtwagen zit je in de dode hoek. Blijf ruim achter de vrachtwagen of sta ver genoeg ervoor zodat de chauffeur je ziet." },
-      { t: "wegcode", q: "Een voetganger staat aan een zebrapad en wil oversteken. Wat doe je?", a: ["Doorrijden, fietsers moeten niet stoppen", "Bellen zodat de voetganger wacht", "Stoppen en de voetganger laten oversteken"], c: 2,
-        x: "Ook als fietser moet je voetgangers die op een zebrapad oversteken of willen oversteken voorrang geven." },
-      { q: "Tot welke leeftijd mogen kinderen op het voetpad fietsen?", a: ["Tot 10 jaar", "Tot 12 jaar", "Nooit"], c: 0,
-        x: "Kinderen jonger dan 10 jaar mogen op het voetpad fietsen, zolang ze voetgangers niet hinderen of in gevaar brengen." },
-      { t: "wegcode", q: "Geldt de alcohollimiet van 0,5 promille ook op de fiets?", a: ["Nee, die geldt alleen voor auto's", "Ja, ook fietsers kunnen beboet worden", "Alleen na middernacht"], c: 1,
-        x: "De limiet van 0,5 promille geldt voor alle bestuurders, dus ook voor fietsers. Wie te veel gedronken heeft, laat de fiets beter staan." }
-    ]
-  },
-  ebike: {
-    name: "Elektrische fiets", sub: "Trapondersteuning tot 25 km/u",
-    tip: "Andere weggebruikers schatten je snelheid vaak te laag in. Maak oogcontact aan kruispunten.",
-    q: [
-      { q: "Tot welke snelheid mag de motor van een gewone elektrische fiets helpen?", a: ["25 km/u", "35 km/u", "45 km/u"], c: 0,
-        x: "Een elektrische fiets (pedelec) ondersteunt tot 25 km/u met een motor van maximaal 250 watt. Sneller trappen mag, maar dan zonder hulp." },
-      { q: "Wat heb je wettelijk nodig voor een elektrische fiets tot 25 km/u?", a: ["Een rijbewijs AM", "Een nummerplaat en verzekering", "Niets extra, dezelfde regels als een gewone fiets"], c: 2,
-        x: "Een pedelec valt onder de regels van een gewone fiets: geen rijbewijs, nummerplaat of helmplicht. Een helm blijft wel een slim idee." },
-      { t: "wegcode", q: "Je komt aan een kruispunt zonder borden, lichten of markeringen. Wie heeft voorrang?", a: ["Wie van rechts komt, ook als dat een fietser is", "Auto's hebben altijd voorrang op fietsers", "Wie het snelst rijdt"], c: 0,
-        x: "Zonder borden of lichten geldt voorrang van rechts. Die regel geldt voor iedereen: fietsers, auto's en bromfietsen." },
-      { q: "Je laat je e-bike opdrijven zodat hij tot 32 km/u ondersteunt. Wat gebeurt er?", a: ["Niets, zolang je het fietspad gebruikt", "Hij is geen fiets meer en je rijdt dan onverzekerd en zonder correcte inschrijving", "Je krijgt enkel een waarschuwing"], c: 1,
-        x: "Een opgedreven e-bike voldoet niet meer aan de regels voor een fiets. Bij een ongeval kan je verzekering weigeren te betalen." },
-      { q: "Hoe zorg je in de winter het best voor je batterij?", a: ["Laten opladen in een koude garage", "Binnen bewaren en op kamertemperatuur opladen", "Volledig leeg laten lopen voor je oplaadt"], c: 1,
-        x: "Lithiumbatterijen houden niet van vrieskou. Laad op bij kamertemperatuur en bewaar de batterij binnen, dan gaat ze langer mee." },
-      { t: "wegcode", q: "Wat geldt er in een schoolstraat tijdens de afgesproken uren?", a: ["Niets bijzonders, het is gewoon een zone 30", "Gemotoriseerd verkeer mag er niet in, fietsers en voetgangers wel", "Ook fietsers moeten afstappen"], c: 1,
-        x: "Een schoolstraat wordt bij het begin en einde van de schooldag afgesloten voor gemotoriseerd verkeer. Fietsers en voetgangers mogen er wel door, rustig en met aandacht voor de kinderen." },
-      { q: "Waarom heb je met een e-bike een langere remweg?", a: ["Door het hogere gewicht en de hogere snelheid", "Omdat de motor tegenwerkt", "Dat klopt niet, de remweg is gelijk"], c: 0,
-        x: "Een e-bike is zwaarder en je rijdt gemiddeld sneller. Rem dus vroeger en houd meer afstand." },
-      { t: "veiligheid", q: "Je fietst langs een rij geparkeerde auto's. Hoe rijd je het veiligst?", a: ["Zo dicht mogelijk bij de auto's, dan ben je uit de weg", "Met ongeveer een meter afstand, zodat een openzwaaiend portier je niet raakt", "Op het voetpad"], c: 1,
-        x: "Een portier dat plots opengaat is een veelvoorkomende oorzaak van fietsongevallen. Een meter afstand geeft je ruimte om te reageren." },
-      { q: "Je nadert een kruispunt aan 24 km/u. Waar moet je extra op letten?", a: ["Op niets, je hebt toch voorrang", "Automobilisten kunnen denken dat je trager rijdt en je de weg afsnijden", "Dat je de ondersteuning uitzet"], c: 1,
-        x: "Wie een fietser ziet, verwacht vaak 15 km/u. Anticipeer en rem tijdig als iemand je niet goed lijkt in te schatten." },
-      { t: "veiligheid", q: "Wat maakt je in het donker het best zichtbaar?", a: ["Een donkere jas", "Goede verlichting en reflecterend materiaal, bv. aan je enkels en op een fluohesje", "Alleen een fietsbel"], c: 1,
-        x: "Lichten zorgen dat je gezien wordt, reflectoren op bewegende delen zoals enkels en pedalen vallen extra op in de koplampen van auto's." }
-    ]
-  },
-  speed: {
-    name: "Speed pedelec", sub: "Ondersteuning tot 45 km/u",
-    tip: "Pas je snelheid aan op drukke fietspaden. Met 45 km/u passeer je andere fietsers sneller dan ze verwachten.",
-    q: [
-      { q: "Tot welke snelheid krijg je ondersteuning op een speed pedelec?", a: ["25 km/u", "45 km/u", "60 km/u"], c: 1,
-        x: "Een speed pedelec ondersteunt tot 45 km/u. Daarom valt hij in België onder de bromfietsen klasse P." },
-      { q: "Welk rijbewijs heb je nodig voor een speed pedelec?", a: ["Geen", "Rijbewijs AM (zit ook in rijbewijs B)", "Rijbewijs A"], c: 1,
-        x: "Je hebt minstens rijbewijs AM nodig. Heb je een rijbewijs B, dan ben je in orde." },
-      { t: "wegcode", q: "Geldt de alcohollimiet van 0,5 promille ook op de fiets?", a: ["Nee, die geldt alleen voor auto's", "Ja, ook fietsers kunnen beboet worden", "Alleen na middernacht"], c: 1,
-        x: "De limiet van 0,5 promille geldt voor alle bestuurders, dus ook voor fietsers. Wie te veel gedronken heeft, laat de fiets beter staan." },
-      { q: "Welke helm is verplicht?", a: ["Geen helm verplicht", "Elke gewone fietshelm", "Een speed-pedelechelm (NTA 8776) of een bromfietshelm"], c: 2,
-        x: "Een helm is verplicht: een bromfietshelm of een speciale speed-pedelechelm volgens de norm NTA 8776, die meer van je hoofd beschermt." },
-      { q: "Wat moet er nog in orde zijn?", a: ["Een nummerplaat en een verzekering", "Alleen een fietsbel", "Een jaarlijkse keuring"], c: 0,
-        x: "Een speed pedelec moet ingeschreven zijn met een nummerplaat en verzekerd zijn, net als een bromfiets." },
-      { t: "wegcode", q: "Je ziet witte driehoekjes (haaientanden) op het wegdek voor je. Wat betekent dat?", a: ["Je moet voorrang verlenen", "Je hebt voorrang", "Er is een fietsoversteekplaats"], c: 0,
-        x: "Haaientanden betekenen dat je voorrang moet verlenen aan het verkeer op de weg die je nadert, net als het driehoekige bord B1." },
-      { q: "Je rijdt buiten de bebouwde kom en er ligt een fietspad. Waar rijd je?", a: ["Op het fietspad", "Op de rijbaan, je bent een bromfiets", "Je kiest zelf"], c: 0,
-        x: "Buiten de bebouwde kom moet je het fietspad volgen als er een is. Binnen de bebouwde kom mag je kiezen tussen fietspad en rijbaan." },
-      { t: "veiligheid", q: "Hoe steek je tramsporen het veiligst over?", a: ["Zo haaks mogelijk", "Evenwijdig met de sporen", "Met een flinke snelheid zodat je er snel over bent"], c: 0,
-        x: "Een wiel kan vastraken in de groef van de rails. Kruis sporen daarom zo haaks mogelijk, zeker als het nat is." },
-      { q: "Je haalt een groepje schoolkinderen in op het fietspad. Wat doe je?", a: ["Bellen en aan 40 km/u voorbij", "Vertragen, ruim afstand houden en pas inhalen als het veilig kan", "Even op het voetpad uitwijken"], c: 1,
-        x: "Het snelheidsverschil met andere fietsers is groot. Vertraag, waarschuw tijdig en haal in met voldoende ruimte." },
-      { t: "veiligheid", q: "Je ziet een ongeval met gewonden. Welk nummer bel je?", a: ["101", "112", "1722"], c: 1,
-        x: "Bel 112 voor de ambulance en brandweer. Zorg eerst dat je zelf veilig staat en help daarna waar je kan." }
-    ]
-  },
-  bakfiets: {
-    name: "Bakfiets", sub: "Met kinderen, boodschappen of lading",
-    tip: "Rem en draai rustig met een volle bak: je bakfiets reageert trager dan je gewone fiets.",
-    q: [
-      { q: "Je bakfiets is breder dan 1 meter. Moet je het fietspad gebruiken?", a: ["Ja, altijd", "Nee, je mag ook de rijbaan gebruiken", "Alleen als er geen auto's zijn"], c: 1,
-        x: "Fietsen met meer dan twee wielen, met een aanhangwagen of breder dan 1 meter mogen ook op de rijbaan rijden, ook als er een fietspad is." },
-      { q: "Waarom neem je met een driewielbakfiets een bocht traag?", a: ["Omdat hij anders kan kantelen", "Om de banden te sparen", "Dat hoeft niet, drie wielen zijn altijd stabiel"], c: 0,
-        x: "Een driewieler leunt niet mee in de bocht. Te snel draaien kan hem doen kantelen. Vertraag voor de bocht, niet erin." },
-      { t: "wegcode", q: "Je komt aan een kruispunt zonder borden, lichten of markeringen. Wie heeft voorrang?", a: ["Wie van rechts komt, ook als dat een fietser is", "Auto's hebben altijd voorrang op fietsers", "Wie het snelst rijdt"], c: 0,
-        x: "Zonder borden of lichten geldt voorrang van rechts. Die regel geldt voor iedereen: fietsers, auto's en bromfietsen." },
-      { q: "Je vervoert kinderen in de bak. Wat is het belangrijkst?", a: ["Een regenhoes", "Dat ze vastzitten met de gordels", "Dat ze naar achteren kijken"], c: 1,
-        x: "Gebruik altijd de gordels in de bak. Een helm voor de kinderen wordt sterk aangeraden." },
-      { q: "Hoe verandert je remweg met een volle bak?", a: ["Hij wordt korter", "Hij blijft gelijk", "Hij wordt langer"], c: 2,
-        x: "Hoe zwaarder de lading, hoe langer je nodig hebt om te stoppen. Houd meer afstand en rem vroeger." },
-      { t: "wegcode", q: "Aan een verkeerslicht is er een gekleurd vak voor de stopstreep van de auto's, met een fiets erop. Wat is dat?", a: ["Een parkeerplaats voor fietsen", "Een opstelvak waar fietsers voor de auto's mogen wachten", "Een zone waar fietsers moeten afstappen"], c: 1,
-        x: "In dat opstelvak wachten fietsers vóór de auto's. Zo zien chauffeurs je beter als het licht groen wordt." },
-      { q: "Waar moet je bij afslaan extra op letten?", a: ["Je bak steekt ver voor je uit en je draaicirkel is groter", "Nergens op, een bakfiets draait scherper", "Dat je je arm niet uitsteekt"], c: 0,
-        x: "De bak zit al op het kruispunt voor jij er bent. Kijk vooruit, steek je arm uit en neem een ruime bocht." },
-      { t: "veiligheid", q: "Je wil muziek luisteren onderweg. Wat is het risico van twee oortjes met noise cancelling?", a: ["Geen enkel risico", "Je hoort naderend verkeer, sirenes of een bel veel minder goed", "Je batterij loopt sneller leeg"], c: 1,
-        x: "Geluid helpt je om verkeer aan te voelen voor je het ziet. Hou het volume laag of laat één oor vrij." },
-      { q: "Waar parkeer je je bakfiets het best?", a: ["Midden op het voetpad, dat mag", "Zo dat voetgangers, rolstoelen en kinderwagens vlot door kunnen", "In de fietsstraat"], c: 1,
-        x: "Je mag een fiets op het voetpad zetten als je voetgangers niet hindert. Met een bakfiets is dat snel het geval, dus kies je plek met zorg." },
-      { t: "wegcode", q: "Een voetganger staat aan een zebrapad en wil oversteken. Wat doe je?", a: ["Doorrijden, fietsers moeten niet stoppen", "Bellen zodat de voetganger wacht", "Stoppen en de voetganger laten oversteken"], c: 2,
-        x: "Ook als fietser moet je voetgangers die op een zebrapad oversteken of willen oversteken voorrang geven." }
-    ]
-  },
-  longtail: {
-    name: "Longtail", sub: "Verlengde bagagedrager voor kids of lading",
-    tip: "Laad zwaar en laag, en controleer het maximale gewicht dat de fabrikant toelaat.",
-    q: [
-      { q: "Je neemt een kind van 6 jaar mee achterop. Wat is verplicht?", a: ["Niets, als het zich goed vasthoudt", "Een aangepast zitje met voetsteunen", "Alleen een helm"], c: 1,
-        x: "Kinderen jonger dan 9 jaar moeten op een aangepast zitje zitten, met bescherming zodat hun voeten niet in de spaken raken." },
-      { q: "Waarvoor dienen wielafschermingen op een longtail?", a: ["Voor de looks", "Om te voorkomen dat voeten of kleding in het achterwiel raken", "Om sneller te rijden"], c: 1,
-        x: "Wielafschermingen en voetsteunen houden voetjes, sjaals en tassen uit de spaken." },
-      { t: "wegcode", q: "Je wil links afslaan. Hoe laat je dat weten?", a: ["Door tijdig je linkerarm uit te steken", "Door te bellen", "Dat hoeft niet op een fiets"], c: 0,
-        x: "Steek tijdig je arm uit in de richting waarin je afslaat, kijk achterom en sorteer pas dan voor. Zo weten anderen wat je van plan bent." },
-      { q: "Hoe laad je zware boodschappen?", a: ["Zo hoog mogelijk, dan zie je ze", "Laag en zo centraal mogelijk", "Helemaal achteraan"], c: 1,
-        x: "Een laag zwaartepunt houdt je fiets stabiel. Zware spullen gaan laag in de tassen, verdeeld over beide kanten." },
-      { q: "Waarom is een brede dubbele standaard handig?", a: ["De fiets blijft stabiel staan terwijl kinderen op- en afstappen", "Hij maakt de fiets lichter", "Hij is verplicht"], c: 0,
-        x: "Met een brede standaard valt de fiets niet om als een kind op het zitje klimt of als je laadt." },
-      { t: "veiligheid", q: "Hoe steek je tramsporen het veiligst over?", a: ["Zo haaks mogelijk", "Evenwijdig met de sporen", "Met een flinke snelheid zodat je er snel over bent"], c: 0,
-        x: "Een wiel kan vastraken in de groef van de rails. Kruis sporen daarom zo haaks mogelijk, zeker als het nat is." },
-      { q: "Je longtail is een stuk langer dan een gewone fiets. Wat betekent dat in het verkeer?", a: ["Niets", "Je achterkant heeft meer ruimte nodig bij inhalen en afslaan", "Je mag niet op het fietspad"], c: 1,
-        x: "Houd rekening met je lengte: wacht bij invoegen tot je volledige fiets ruimte heeft en kijk achterom voor je terug naar rechts gaat." },
-      { t: "veiligheid", q: "Wat maakt je in het donker het best zichtbaar?", a: ["Een donkere jas", "Goede verlichting en reflecterend materiaal, bv. aan je enkels en op een fluohesje", "Alleen een fietsbel"], c: 1,
-        x: "Lichten zorgen dat je gezien wordt, reflectoren op bewegende delen zoals enkels en pedalen vallen extra op in de koplampen van auto's." },
-      { q: "Mag je samen met je passagier zoveel laden als je wil?", a: ["Ja, een longtail kan alles aan", "Nee, houd je aan het maximale totaalgewicht van de fabrikant", "Ja, zolang je stapvoets rijdt"], c: 1,
-        x: "Elke longtail heeft een maximaal totaalgewicht voor fietser, passagiers en lading. Daarboven worden remmen en frame overbelast." },
-      { t: "veiligheid", q: "Je ziet een ongeval met gewonden. Welk nummer bel je?", a: ["101", "112", "1722"], c: 1,
-        x: "Bel 112 voor de ambulance en brandweer. Zorg eerst dat je zelf veilig staat en help daarna waar je kan." }
-    ]
+// De vragen staan in vragen.json, zodat ze aangepast en geroteerd kunnen worden zonder deze pagina te wijzigen.
+let VEHICLES = {};
+let SETTINGS = { modus: "vast", aantal: 10 };
+
+async function loadQuestions() {
+  const res = await fetch("vragen.json", { cache: "no-cache" });
+  if (!res.ok) throw new Error("vragen.json: " + res.status);
+  const data = await res.json();
+  SETTINGS = { modus: data.modus === "willekeurig" ? "willekeurig" : "vast", aantal: data.aantal || 10 };
+  for (const [id, v] of Object.entries(data.quizzen)) {
+    VEHICLES[id] = {
+      name: v.naam, sub: v.uitleg, tip: v.tip, mode: !v.fietstype,
+      all: v.vragen.map(q => ({ actief: q.actief !== false, t: q.soort, q: q.vraag, a: q.antwoorden, c: q.juist, x: q.uitleg }))
+    };
   }
-};
+}
+
+function shuffled(list) {
+  const a = list.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+
+function pickQuestions(v) {
+  if (SETTINGS.modus === "willekeurig") return shuffled(v.all).slice(0, SETTINGS.aantal);
+  const active = v.all.filter(q => q.actief);
+  return (active.length ? active : v.all).slice(0, SETTINGS.aantal);
+}
 
 const app = document.getElementById("app");
 const backBtn = document.getElementById("backBtn");
@@ -468,7 +312,7 @@ function showBikes() {
 }
 
 function start(id) {
-  state = { id, i: 0, score: 0, answers: [] };
+  state = { id, i: 0, score: 0, answers: [], qs: pickQuestions(VEHICLES[id]) };
   screen = "quiz";
   try { history.replaceState(null, "", "#" + id); } catch (e) {}
   backBtn.hidden = false;
@@ -480,8 +324,8 @@ function start(id) {
 
 function renderQuestion() {
   const v = VEHICLES[state.id];
-  const item = v.q[state.i];
-  const total = v.q.length;
+  const item = state.qs[state.i];
+  const total = state.qs.length;
   // antwoorden in willekeurige volgorde, zodat het juiste antwoord niet altijd op dezelfde plek staat
   state.order = item.a.map((_, k) => k).sort(() => Math.random() - 0.5);
   app.innerHTML = `
@@ -490,7 +334,7 @@ function renderQuestion() {
         <span class="ico" aria-hidden="true">${ICONS[state.id]}</span>
         <div><div class="t">${v.name}</div><div class="c">Vraag ${state.i + 1} van ${total}</div></div>
       </div>
-      <div class="progress" aria-hidden="true">${v.q.map((_, k) => `<span class="${k < state.i ? "done" : k === state.i ? "now" : ""}"></span>`).join("")}</div>
+      <div class="progress" aria-hidden="true">${state.qs.map((_, k) => `<span class="${k < state.i ? "done" : k === state.i ? "now" : ""}"></span>`).join("")}</div>
       <span class="tag ${item.t || "fiets"}">${item.t === "wegcode" ? "Wegcode" : item.t === "veiligheid" ? "Verkeersveiligheid" : "Jouw " + v.name.toLowerCase()}</span>
       <h2 class="question">${esc(item.q)}</h2>
       <div class="answers">
@@ -503,7 +347,7 @@ function renderQuestion() {
 
 function choose(k) {
   const v = VEHICLES[state.id];
-  const item = v.q[state.i];
+  const item = state.qs[state.i];
   const ok = k === item.c;
   if (ok) state.score++;
   state.answers.push(ok);
@@ -514,7 +358,7 @@ function choose(k) {
     else if (idx === k) b.classList.add("wrong");
     else b.classList.add("dim");
   });
-  const last = state.i === v.q.length - 1;
+  const last = state.i === state.qs.length - 1;
   const after = document.getElementById("after");
   after.innerHTML = `
     <div class="explain" role="status"><strong>${ok ? "Juist!" : "Niet helemaal"}</strong><p>${esc(item.x)}</p></div>
@@ -527,7 +371,7 @@ function choose(k) {
 
 function renderResult() {
   const v = VEHICLES[state.id];
-  const total = v.q.length, s = state.score;
+  const total = state.qs.length, s = state.score;
   const bike = !v.mode;
   const verdict = s === total ? (bike ? "Fietsfit met glans" : "Verkeersfit met glans") : s >= total - 3 ? "Goed op weg" : (bike ? "Nog wat bijtrappen" : "Nog wat oefenen");
   app.innerHTML = `
@@ -537,7 +381,7 @@ function renderResult() {
       <p class="verdict">${verdict}</p>
       <div class="lane-rule" aria-hidden="true"></div>
       <div class="tipbox"><div class="eyebrow">Tip voor onderweg</div><p>${esc(v.tip)}</p></div>
-      <div class="review">${v.q.map((it, k) => `<div><span class="mark ${state.answers[k] ? "y" : "n"}">${state.answers[k] ? "✓" : "✕"}</span><span><b>${esc(it.q)}</b><br>${esc(it.a[it.c])}</span></div>`).join("")}</div>
+      <div class="review">${state.qs.map((it, k) => `<div><span class="mark ${state.answers[k] ? "y" : "n"}">${state.answers[k] ? "✓" : "✕"}</span><span><b>${esc(it.q)}</b><br>${esc(it.a[it.c])}</span></div>`).join("")}</div>
       <button class="cta" id="again">${bike ? "Probeer een andere fiets" : "Kies een ander vervoermiddel"} ${ARROW}</button>
       <button class="cta alt" id="share">Kopieer link naar deze quiz ${ARROW}</button>
       <div class="copied" id="copied" role="status"></div>
@@ -585,7 +429,10 @@ if ("serviceWorker" in navigator) {
 }
 
 const initial = (location.hash || "").slice(1);
-if (VEHICLES[initial]) start(initial); else if (initial === "fietsen") renderBikes(); else renderHome();
+app.innerHTML = `<p class="lede" style="padding-block: 40px">Vragen laden…</p>`;
+loadQuestions()
+  .then(() => { if (VEHICLES[initial]) start(initial); else if (initial === "fietsen") renderBikes(); else renderHome(); })
+  .catch(() => { app.innerHTML = `<p class="lede" style="padding-block: 40px">De vragen konden niet geladen worden. Controleer je internetverbinding en vernieuw de pagina.</p>`; });
 </script>
 
 </body>

@@ -66,8 +66,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--sign); outline-
 
 /* kop */
 .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px 6px; }
-.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-stretch: 85%; letter-spacing: .02em; text-transform: uppercase; font-size: 15px; }
-.brand .dot { width: 26px; height: 26px; border-radius: 50%; background: var(--sign); display: grid; place-items: center; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-stretch: 85%; letter-spacing: .02em; text-transform: uppercase; font-size: 15px; white-space: nowrap; min-width: 0; }
+.brand .dot { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--sign); display: grid; place-items: center; }
 .brand .dot svg { width: 18px; height: 18px; }
 .back { white-space: nowrap; border: 0; background: transparent; padding: 8px 4px; color: var(--muted); cursor: pointer; font-size: 15px; display: inline-flex; align-items: center; gap: 6px; }
 .back:hover { color: var(--ink); }
@@ -100,11 +100,12 @@ h1 .hl { color: var(--lane); }
 .vehicle .go { width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; flex: none; }
 .vehicle .go svg { width: 16px; height: 16px; }
 .vehicle .meta { min-width: 0; }
-.install { margin-top: 22px; display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: center; padding: 14px; border-radius: 14px; background: var(--surface); border: 2px dashed var(--line); }
-.install img { width: 52px; height: 52px; border-radius: 12px; }
-.install b { font-family: var(--font-display); font-weight: 800; font-stretch: 90%; text-transform: uppercase; letter-spacing: .03em; display: block; }
-.install p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
-.install button { margin-top: 10px; border: 0; cursor: pointer; border-radius: 10px; padding: 10px 14px; background: var(--lane); color: #fff; font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 14px; }
+.install-btn { display: inline-flex; align-items: center; gap: 6px; border: 2px solid var(--lane); background: transparent; color: var(--lane); cursor: pointer; border-radius: 999px; padding: 5px 11px 5px 8px; font-family: var(--font-display); font-weight: 800; font-stretch: 90%; text-transform: uppercase; letter-spacing: .04em; font-size: 12px; white-space: nowrap; flex: none; }
+@media (hover: hover) { .install-btn:hover { background: var(--lane); color: var(--surface); } }
+.install-btn:active { background: var(--lane); color: var(--surface); }
+.install-btn svg { width: 15px; height: 15px; }
+.ios-hint { margin-top: 4px; padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 2px dashed var(--line); font-size: 15px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; }
+.ios-hint button { border: 0; background: transparent; cursor: pointer; color: var(--muted); font-size: 20px; line-height: 1; padding: 0 4px; }
 .foot { color: var(--muted); font-size: 13px; margin-top: 26px; }
 .foot a { color: inherit; }
 
@@ -177,10 +178,14 @@ h1 .hl { color: var(--lane); }
       <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="16" r="3.5"/><circle cx="18" cy="16" r="3.5"/><path d="M6 16l4-7h5l3 7M10 9l2 7"/></svg></span>
       Op weg met de fiets
     </div>
+    <button class="install-btn" id="installBtn" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Installeer app
+    </button>
     <button class="back" id="backBtn" hidden aria-label="Terug naar keuze">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>Ander voertuig
     </button>
   </header>
+  <div class="ios-hint" id="iosHint" hidden role="status"><span>Tik onderaan in Safari op het deelicoon en kies <strong>Zet op beginscherm</strong>.</span><button id="iosClose" aria-label="Sluiten">×</button></div>
   <main id="app"></main>
 </div>
 
@@ -353,7 +358,6 @@ function renderHome() {
             <span class="go" aria-hidden="true">${ARROW}</span>
           </button>`).join("")}
       </div>
-      <div id="installSlot"></div>
       <p class="foot">Gebaseerd op de Belgische wegcode. Meer info op <a href="https://www.wegcode.be" target="_blank" rel="noopener">wegcode.be</a>.</p>
     </section>`;
   app.querySelectorAll(".vehicle").forEach(b => b.addEventListener("click", () => start(b.dataset.id)));
@@ -364,6 +368,8 @@ function start(id) {
   state = { id, i: 0, score: 0, answers: [] };
   try { history.replaceState(null, "", "#" + id); } catch (e) {}
   backBtn.hidden = false;
+  renderInstall();
+  iosHint.hidden = true;
   renderQuestion();
   window.scrollTo({ top: 0 });
 }
@@ -448,23 +454,22 @@ backBtn.addEventListener("click", goHome);
 let installPrompt = null;
 const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
 const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const installBtn = document.getElementById("installBtn");
+const iosHint = document.getElementById("iosHint");
 function renderInstall() {
-  const slot = document.getElementById("installSlot");
-  if (!slot || standalone) return;
-  if (installPrompt) {
-    slot.innerHTML = `<div class="install"><img src="icons/icon-192.png" alt=""><div><b>Zet de quiz op je startscherm</b><p>Speel later opnieuw, ook zonder internet.</p><button id="installBtn">Installeer de app</button></div></div>`;
-    document.getElementById("installBtn").addEventListener("click", async () => {
-      installPrompt.prompt();
-      await installPrompt.userChoice;
-      installPrompt = null;
-      slot.innerHTML = "";
-    });
-  } else if (isIOS) {
-    slot.innerHTML = `<div class="install"><img src="icons/icon-192.png" alt=""><div><b>Zet de quiz op je startscherm</b><p>Tik onderaan in Safari op het deelicoon en kies <strong>Zet op beginscherm</strong>.</p></div></div>`;
-  } else {
-    slot.innerHTML = "";
-  }
+  installBtn.hidden = standalone || state !== null || !(installPrompt || isIOS);
 }
+installBtn.addEventListener("click", async () => {
+  if (installPrompt) {
+    installPrompt.prompt();
+    await installPrompt.userChoice;
+    installPrompt = null;
+    renderInstall();
+  } else {
+    iosHint.hidden = !iosHint.hidden;
+  }
+});
+document.getElementById("iosClose").addEventListener("click", () => { iosHint.hidden = true; });
 window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); installPrompt = e; renderInstall(); });
 window.addEventListener("appinstalled", () => { installPrompt = null; renderInstall(); });
 if ("serviceWorker" in navigator) {

@@ -166,6 +166,10 @@ h1 .hl { color: var(--lane); }
 .tipbox { margin-top: 18px; padding: 16px; border-radius: 12px; background: var(--surface); border: 2px dashed var(--line); }
 .tipbox .eyebrow { color: var(--sign); }
 .tipbox p { margin: 6px 0 0; }
+.outro { margin-top: 22px; padding: 18px 16px; border-radius: 12px; background: var(--surface); border: 2px solid var(--ink); }
+.outro .eyebrow { color: var(--lane); }
+.outro p { margin: 8px 0 0; }
+.outro ul { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 6px; }
 .review { margin-top: 22px; display: grid; gap: 8px; }
 .review div { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 15px; color: var(--muted); }
 .review b { color: var(--ink); font-weight: 700; }
@@ -212,11 +216,13 @@ const ARROW = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 // De vragen staan in vragen.json, zodat ze aangepast en geroteerd kunnen worden zonder deze pagina te wijzigen.
 let VEHICLES = {};
 let SETTINGS = { modus: "vast", aantal: 10 };
+let OUTROS = {};
 
 async function loadQuestions() {
   const res = await fetch("vragen.json", { cache: "no-cache" });
   if (!res.ok) throw new Error("vragen.json: " + res.status);
   const data = await res.json();
+  OUTROS = data.afsluiters || {};
   SETTINGS = { modus: data.modus === "willekeurig" ? "willekeurig" : "vast", aantal: data.aantal || 10 };
   for (const [id, v] of Object.entries(data.quizzen)) {
     VEHICLES[id] = {
@@ -381,6 +387,7 @@ function renderResult() {
       <p class="verdict">${verdict}</p>
       <div class="lane-rule" aria-hidden="true"></div>
       <div class="tipbox"><div class="eyebrow">Tip voor onderweg</div><p>${esc(v.tip)}</p></div>
+      ${outroHtml(state.id)}
       <div class="review">${state.qs.map((it, k) => `<div><span class="mark ${state.answers[k] ? "y" : "n"}">${state.answers[k] ? "✓" : "✕"}</span><span><b>${esc(it.q)}</b><br>${esc(it.a[it.c])}</span></div>`).join("")}</div>
       <button class="cta" id="again">${bike ? "Probeer een andere fiets" : "Kies een ander vervoermiddel"} ${ARROW}</button>
       <button class="cta alt" id="share">Kopieer link naar deze quiz ${ARROW}</button>
@@ -393,6 +400,12 @@ function renderResult() {
     const msg = document.getElementById("copied");
     navigator.clipboard.writeText(url).then(() => { msg.textContent = "Link gekopieerd."; }).catch(() => { msg.textContent = url; });
   });
+}
+
+function outroHtml(id) {
+  const o = OUTROS[id === "voet" || id === "auto" ? id : "fiets"];
+  if (!o) return "";
+  return `<div class="outro"><div class="eyebrow">Veilig op weg in het donker</div><p>${esc(o.tekst)}</p><ul>${(o.tips || []).map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>`;
 }
 
 function goHome() {

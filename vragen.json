@@ -5,10 +5,37 @@
     "modus 'willekeurig': de quiz kiest bij elke start 'aantal' vragen willekeurig uit alle vragen van die quiz (actief of niet).",
     "Een vraag wisselen: zet \"actief\" van de ene vraag op false en van een andere op true. Houd per quiz 10 actieve vragen.",
     "juist = nummer van het juiste antwoord, te tellen vanaf 0 (0 = eerste antwoord). De volgorde van de antwoorden wordt in de app altijd door elkaar gezet.",
-    "soort = wegcode, veiligheid of voertuig (vragen over het voertuig zelf)."
+    "soort = wegcode, veiligheid of voertuig (vragen over het voertuig zelf).",
+    "afsluiters = de tekst met tips die na de quiz verschijnt, per vervoermiddel (voet, fiets, auto)."
   ],
   "modus": "vast",
   "aantal": 10,
+  "afsluiters": {
+    "voet": {
+      "tekst": "Bedankt om mee te doen aan de AZT Mobiliteitsquiz! In het donker zien chauffeurs je als voetganger pas heel laat. Daarom deze tips:",
+      "tips": [
+        "Draag lichte kleren en iets reflecterends, zoals een fluohesje of reflecterende banden om je enkels.",
+        "Steek over op een zebrapad of op een goed verlichte plek, en maak oogcontact.",
+        "Houd je gsm in je zak bij het oversteken en zet je muziek zacht."
+      ]
+    },
+    "fiets": {
+      "tekst": "Bedankt om mee te doen aan de AZT Mobiliteitsquiz! Nu de dagen korter worden, rijd je vaker in het donker. Zo blijf je zichtbaar:",
+      "tips": [
+        "Controleer voor je vertrekt of je lichten werken: wit of geel vooraan, rood achteraan. Houd reservelampjes in je tas.",
+        "Zorg voor reflectoren op je pedalen en wielen, en draag een fluohesje.",
+        "Rem vroeger en rijd rustiger: putten, takken en natte bladeren zie je later."
+      ]
+    },
+    "auto": {
+      "tekst": "Bedankt om mee te doen aan de AZT Mobiliteitsquiz! In het donker zie je fietsers en voetgangers veel later. Daarom deze tips:",
+      "tips": [
+        "Zet tijdig je dimlichten aan en houd je ruiten en lichten proper.",
+        "Schakel je grootlicht uit als er tegenliggers, fietsers of voetgangers aankomen, zodat je hen niet verblindt.",
+        "Pas je snelheid aan en verwacht fietsers en voetgangers in donkere kleren, zeker in woonwijken en aan schoolpoorten."
+      ]
+    }
+  },
   "quizzen": {
     "voet": {
       "naam": "Te voet",

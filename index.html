@@ -419,10 +419,12 @@ backBtn.addEventListener("click", () => (screen === "quiz" && !VEHICLES[state.id
 let installPrompt = null;
 const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
 const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+// De installatieknop verschijnt alleen op smartphones en tablets, niet in een browser op de computer.
+const isMobile = (navigator.userAgentData && navigator.userAgentData.mobile) || isIOS || /android|mobile/i.test(navigator.userAgent);
 const installBtn = document.getElementById("installBtn");
 const iosHint = document.getElementById("iosHint");
 function renderInstall() {
-  installBtn.hidden = standalone || state !== null || !(installPrompt || isIOS);
+  installBtn.hidden = standalone || !isMobile || state !== null || !(installPrompt || isIOS);
 }
 installBtn.addEventListener("click", async () => {
   if (installPrompt) {

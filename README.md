@@ -1,4 +1,4 @@
-# AZT Mobiliteitsquiz
+# AZT Mobiliteitsapp
 
 Quiz voor de mobiliteitsactie. Kies hoe je naar het werk komt (te voet, met de fiets of met de auto) en beantwoord tien vragen over de Belgische wegcode en verkeersveiligheid. Bij de fiets kies je eerst je type: gewone fiets, elektrische fiets, speed pedelec, bakfiets of longtail.
 

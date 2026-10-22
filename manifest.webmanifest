@@ -1,6 +1,6 @@
 {
-  "name": "AZT Mobiliteitsquiz",
-  "short_name": "AZT quiz",
+  "name": "AZT Mobiliteitsapp",
+  "short_name": "AZT Mobiliteitsapp",
   "description": "Te voet, met de fiets of met de auto: test je kennis van de wegcode en verkeersveiligheid.",
   "lang": "nl-BE",
   "start_url": "./",

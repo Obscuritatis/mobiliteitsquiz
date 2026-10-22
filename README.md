@@ -16,3 +16,10 @@ Elke quiz heeft 20 vragen in `vragen.json`, waarvan er 10 `"actief": true` staan
 - `"modus": "willekeurig"`: bij elke start worden 10 vragen willekeurig gekozen uit alle 20.
 
 Je kan `vragen.json` rechtstreeks op GitHub bewerken (potloodicoon). Na het opslaan staat de nieuwe versie binnen enkele minuten online. De app is installeerbaar (manifest, iconen in `icons/`, `sw.js` voor offline gebruik).
+
+## Veiligheid en privacy
+
+- Statische site: geen server, geen login, geen formulieren, geen cookies of tracking. De app vraagt geen toegang tot camera, locatie of bestanden.
+- Alle bestanden (ook de lettertypes) komen van deze site zelf; er worden geen gegevens naar derden gestuurd.
+- Een Content Security Policy laat alleen scripts, stijlen en lettertypes van deze site toe.
+- Lettertypes: Archivo en Atkinson Hyperlegible, beide onder de SIL Open Font License.
